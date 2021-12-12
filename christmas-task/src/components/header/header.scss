@@ -1,3 +1,74 @@
 .header {
-  background-color: lightseagreen;
+  background-color: $color-bg;
+
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+
+    &_link {
+      position: relative;
+      display: block;
+      font-size: 28px;
+      color: #fff;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 20px;
+      transition: 0.3s;
+
+      &.active::after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 4px;
+        background-color: $hover;
+      }
+
+      &:hover {
+        color: $hover;
+      }
+    }
+  }
+
+  .logo {
+    width: 48px;
+    height: 40px;
+    background: url('./assets/svg/tree.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: 0.1s;
+
+    &:hover {
+      filter: invert(39%) sepia(92%) saturate(618%) hue-rotate(116deg) brightness(97%) contrast(98%);
+    }
+  }
+
+  .counter {
+    position: relative;
+    width: 64px;
+    height: 80px;
+    background: url('./assets/svg/ball-2.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    &_number {
+      position: absolute;
+      left: 3px;
+      bottom: 3px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 53px;
+      height: 53px;
+      background-color: rgb(32, 178, 170);
+      border-radius: 50%;
+      color: #fff;
+      font-size: 28px;
+    }
+  }
 }
