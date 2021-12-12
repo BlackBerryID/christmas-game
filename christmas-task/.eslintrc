@@ -12,6 +12,7 @@
   },
   "plugins": ["@typescript-eslint", "import"],
   "rules": {
+    "no-unused-vars": "warn",
     "no-plusplus": "off",
     "no-console": "warn",
     "@typescript-eslint/comma-dangle": "off",

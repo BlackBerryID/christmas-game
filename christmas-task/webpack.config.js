@@ -11,6 +11,7 @@ const devServer = (isDev) =>
         devServer: {
           open: true,
           hot: true,
+          watchFiles: ['src/**'],
           port: 8080,
         },
       };
@@ -27,6 +28,12 @@ module.exports = ({ develop }) => ({
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[contenthash].js',
     assetModuleFilename: 'assets/[hash][ext]',
+  },
+  // create only one additional file when I import an external library into a couple of my files (this works for two+ output files)
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
   },
   module: {
     rules: [
@@ -58,7 +65,7 @@ module.exports = ({ develop }) => ({
     ],
   },
   resolve: {
-    // require for import files
+    // require for import files without writing thier extentions
     extensions: ['.ts', '.js'],
   },
   plugins: [
