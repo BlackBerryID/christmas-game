@@ -1,4 +1,4 @@
-.filters {
+.filters-column {
   width: 35%;
   background-color: $color-bg;
 }
@@ -62,4 +62,56 @@
   &:hover::after {
     color: #23b499;
   }
+}
+
+.shape {
+  margin: 20px 0;
+
+  &_list {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 16px;
+  }
+
+  &-item {
+    display: flex;
+    align-items: flex-end;
+    height: 70px;
+    background-repeat: no-repeat;
+    background-position: top;
+    color: #fff;
+    transition: 0.1s;
+
+    &_1 {
+      background-image: url('./assets/svg/bell.svg');
+    }
+    &_2 {
+      background-image: url('./assets/svg/ball.svg');
+    }
+    &_3 {
+      background-image: url('./assets/svg/cone.svg');
+    }
+    &_4 {
+      background-image: url('./assets/svg/snowflake.svg');
+    }
+    &_5 {
+      background-image: url('./assets/svg/toy.svg');
+    }
+
+    &:hover {
+      cursor: pointer;
+      filter: invert(10%) sepia(0%) saturate(0%) hue-rotate(64deg) brightness(97%) contrast(97%);
+    }
+
+    &.active {
+      filter: invert(39%) sepia(92%) saturate(618%) hue-rotate(116deg) brightness(97%) contrast(98%);
+    }
+  }
+}
+
+.title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 400;
+  margin-left: 14px;
 }
