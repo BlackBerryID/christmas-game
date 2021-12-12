@@ -1,4 +1,4 @@
-$color-bg: rgba(32, 178, 170, 0.8);
+$color-bg: rgba(32, 178, 170, 0.3);
 $hover: #03e3b8;
 
 *,
@@ -17,7 +17,7 @@ body {
   font-family: 'Fira Sans', sans-serif;
   min-height: 100vh;
   min-width: 100vw;
-  // backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
 }
 
 a {
