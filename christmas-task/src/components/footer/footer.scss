@@ -1,0 +1,46 @@
+.footer {
+  position: absolute;
+  bottom: 0;
+  background-color: $color-bg;
+  height: 100px;
+  width: 100%;
+
+  &_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
+
+  &_link {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.1s;
+
+    .year {
+      position: relative;
+      left: 180px;
+      top: 25%;
+      font-size: 40px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    &:hover {
+      filter: invert(39%) sepia(92%) saturate(618%) hue-rotate(116deg) brightness(97%) contrast(98%);
+    }
+  }
+
+  .github {
+    width: 64px;
+    height: 64px;
+    background-image: url(./assets/svg/github-icon.svg);
+  }
+
+  .rs-school {
+    width: 173px;
+    height: 64px;
+    background-image: url(./assets/svg/rss.svg);
+  }
+}
