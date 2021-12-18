@@ -101,7 +101,7 @@
     }
 
     &.active {
-      filter: invert(39%) sepia(92%) saturate(618%) hue-rotate(116deg) brightness(97%) contrast(98%);
+      filter: invert(66%) sepia(12%) saturate(1866%) hue-rotate(126deg) brightness(184%) contrast(90%);
     }
   }
 }
@@ -235,5 +235,27 @@ label {
 
   label {
     font-size: 22px;
+  }
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 30px;
+}
+
+.btn {
+  background-color: transparent;
+  border: 2px solid $slider;
+  color: #fff;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: $slider;
   }
 }

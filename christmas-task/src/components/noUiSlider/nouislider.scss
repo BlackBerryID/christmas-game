@@ -1,4 +1,5 @@
 .slider {
+  margin-top: 10px;
   &_amount,
   &_year {
     width: 320px;
@@ -16,7 +17,7 @@
     margin: 0 32px;
     border-radius: 15px;
     background-color: transparent;
-    border: 2px solid #3fb8af;
+    border: 2px solid $slider;
     outline: none;
     text-align: center;
     color: #fff;
