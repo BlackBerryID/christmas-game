@@ -1,14 +1,14 @@
 .filters-column {
   width: 30%;
   background-color: $color-bg;
+  margin: 24px 0;
+  border-radius: 15px;
   padding: 16px;
 }
 
 .sort {
   display: flex;
   flex-direction: column;
-  // justify-content: space-around;
-  // align-items: center;
   margin-top: 20px;
 }
 

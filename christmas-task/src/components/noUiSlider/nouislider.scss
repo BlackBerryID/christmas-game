@@ -1,17 +1,31 @@
 .slider {
-  &_amount {
+  &_amount,
+  &_year {
     width: 320px;
   }
 
   &_wrapper {
     display: flex;
+    align-items: center;
+    margin: 10px 0;
   }
 
   &_input {
-    width: 40px;
-    height: 25px;
+    width: 65px;
+    height: 35px;
     margin: 0 32px;
     border-radius: 15px;
-    background-color: lightpink;
+    background-color: transparent;
+    border: 2px solid #3fb8af;
+    outline: none;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 }

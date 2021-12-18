@@ -2,8 +2,8 @@ import * as noUiSlider from 'nouislider';
 import 'noUiSlider/dist/nouislider.css';
 
 const sliderAmount = document.querySelector('.slider_amount') as noUiSlider.target;
-const inputLeftNumber = document.querySelector('.slider_input__left') as HTMLInputElement;
-const inputRightNumber = document.querySelector('.slider_input__right') as HTMLInputElement;
+const inputAmountLeftNumber = document.querySelector('.slider_input__amount-left') as HTMLInputElement;
+const inputAmountRightNumber = document.querySelector('.slider_input__amount-right') as HTMLInputElement;
 
 noUiSlider.create(sliderAmount as HTMLElement, {
   start: [1, 12],
@@ -19,12 +19,32 @@ noUiSlider.create(sliderAmount as HTMLElement, {
   const currentValue = values[handle];
 
   if (handle) {
-    inputRightNumber.value = String(Math.round(+currentValue));
+    inputAmountRightNumber.value = String(Math.round(+currentValue));
   } else {
-    inputLeftNumber.value = String(Math.round(+currentValue));
+    inputAmountLeftNumber.value = String(Math.round(+currentValue));
   }
 });
 
-inputLeftNumber.addEventListener('change', function () {
-  (sliderAmount.noUiSlider as noUiSlider.API).set([this.value]);
+const sliderYear = document.querySelector('.slider_year') as noUiSlider.target;
+const inputYearLeftNumber = document.querySelector('.slider_input__year-left') as HTMLInputElement;
+const inputYearRightNumber = document.querySelector('.slider_input__year-right') as HTMLInputElement;
+
+noUiSlider.create(sliderYear as HTMLElement, {
+  start: [1940, 2020],
+  range: {
+    min: [1940],
+    max: [2020],
+  },
+  connect: true,
+  step: 10,
+});
+
+(sliderYear.noUiSlider as noUiSlider.API).on('update', function (values, handle) {
+  const currentValue = values[handle];
+
+  if (handle) {
+    inputYearRightNumber.value = String(Math.round(+currentValue));
+  } else {
+    inputYearLeftNumber.value = String(Math.round(+currentValue));
+  }
 });
