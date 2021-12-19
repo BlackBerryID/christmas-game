@@ -1,5 +1,7 @@
 import * as noUiSlider from 'nouislider';
 import 'noUiSlider/dist/nouislider.css';
+import { Cards } from '../main/renderCards';
+import { LocalStorage } from '../main/storage';
 
 const sliderAmount = document.querySelector('.slider_amount') as noUiSlider.target;
 const inputAmountLeftNumber = document.querySelector('.slider_input__amount-left') as HTMLInputElement;
@@ -23,6 +25,11 @@ noUiSlider.create(sliderAmount as HTMLElement, {
   } else {
     inputAmountLeftNumber.value = String(Math.round(+currentValue));
   }
+
+  const storage = new LocalStorage();
+  storage.storage.sliderAmount = [+inputAmountLeftNumber.value, +inputAmountRightNumber.value];
+  const cards = new Cards();
+  cards.renderCards();
 });
 
 const sliderYear = document.querySelector('.slider_year') as noUiSlider.target;
@@ -48,3 +55,5 @@ noUiSlider.create(sliderYear as HTMLElement, {
     inputYearLeftNumber.value = String(Math.round(+currentValue));
   }
 });
+
+export { sliderAmount, sliderYear };

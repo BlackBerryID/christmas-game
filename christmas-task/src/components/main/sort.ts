@@ -1,4 +1,4 @@
-import { Cards, IData, ICards } from './renderCards';
+import { Cards, IData } from './renderCards';
 import { LocalStorage, ILocalStorage } from './storage';
 
 interface ISort {
@@ -21,7 +21,6 @@ class Sort implements ISort {
   }
 
   addListener() {
-    console.log(this.select);
     this.select.addEventListener('change', this.changeOption.bind(this));
   }
 

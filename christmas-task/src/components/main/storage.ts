@@ -4,6 +4,8 @@ interface IInstance {
 
 interface IStorage {
   sortMethod?: string;
+  sliderAmount?: number[];
+  sliderYear?: number[];
 }
 
 interface ILocalStorage {

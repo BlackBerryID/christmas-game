@@ -1,4 +1,5 @@
 import { Sort, ISort } from './sort';
+import { Filters, IFilters } from '../main/filters';
 
 interface IData {
   [index: string]: string | boolean;
@@ -30,6 +31,7 @@ class Cards implements ICards {
   private cardDescription: ICardDescription;
   private cardsInnerWrapper: HTMLElement;
   private sort: ISort;
+  private filters: IFilters;
 
   constructor() {
     this.cardDescription = {
@@ -42,6 +44,7 @@ class Cards implements ICards {
     };
     this.cardsInnerWrapper = document.querySelector('.cards_inner-wrapper') as HTMLElement;
     this.sort = new Sort();
+    this.filters = new Filters();
   }
 
   private getCardDescription(key: string): string {
@@ -85,8 +88,9 @@ class Cards implements ICards {
   }
 
   async renderCards(): Promise<void> {
-    const cardsArray: IData[] = await (await fetch('../public/data.json')).json();
+    let cardsArray: IData[] = await (await fetch('../public/data.json')).json();
     this.sort.sortCards(cardsArray);
+    cardsArray = cardsArray.filter((item) => this.filters.filterByCount(item));
     this.cardsInnerWrapper.innerHTML = '';
     cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
     console.log(cardsArray);
