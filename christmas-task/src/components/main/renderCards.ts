@@ -78,7 +78,7 @@ export default class Cards {
 
   async renderCards(): Promise<void> {
     const cardsArray: IData[] = await (await fetch('../public/data.json')).json();
-    this.cardsInnerWrapper.append(this.createCard(cardsArray[0]));
+    cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
     console.log(cardsArray);
   }
 }
