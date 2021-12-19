@@ -1,6 +1,7 @@
 import './index.scss';
 import './components/noUiSlider/slider';
-import Data from './components/main/data';
+import Cards from './components/main/renderCards';
+import './components/main/renderCards';
 
-const dataClass = new Data();
-dataClass.getData().then((data) => console.log(data));
+const cards = new Cards();
+cards.renderCards();
