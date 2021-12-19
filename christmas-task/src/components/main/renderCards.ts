@@ -1,3 +1,5 @@
+import { Sort, ISort } from './sort';
+
 interface IData {
   [index: string]: string | boolean;
   num: string;
@@ -20,9 +22,10 @@ interface ICardDescription {
   favorite: string;
 }
 
-export default class Cards {
+class Cards {
   private cardDescription: ICardDescription;
   private cardsInnerWrapper: HTMLElement;
+  private sort: ISort;
 
   constructor() {
     this.cardDescription = {
@@ -34,6 +37,7 @@ export default class Cards {
       favorite: 'Любимая: ',
     };
     this.cardsInnerWrapper = document.querySelector('.cards_inner-wrapper') as HTMLElement;
+    this.sort = new Sort();
   }
 
   private getCardDescription(key: string): string {
@@ -78,7 +82,10 @@ export default class Cards {
 
   async renderCards(): Promise<void> {
     const cardsArray: IData[] = await (await fetch('../public/data.json')).json();
+    this.sort.sortCards(cardsArray);
     cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
     console.log(cardsArray);
   }
 }
+
+export { Cards, IData };
