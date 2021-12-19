@@ -1,0 +1,21 @@
+interface IInstance {
+  storage: IStorage;
+}
+
+interface IStorage {
+  sortMethod?: number;
+}
+
+class LocalStorage {
+  static instance: IInstance;
+  static exists: boolean;
+  storage!: IStorage;
+
+  constructor() {
+    if (LocalStorage.exists) return LocalStorage.instance;
+
+    LocalStorage.instance = this;
+    LocalStorage.exists = true;
+    this.storage = JSON.parse(localStorage.getItem('storage') as string) || {};
+  }
+}
