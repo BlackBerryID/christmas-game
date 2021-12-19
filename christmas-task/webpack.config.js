@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const devServer = (isDev) =>
   !isDev
@@ -78,6 +79,9 @@ module.exports = ({ develop }) => ({
     }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
     ...esLintPlugin(develop),
+    new CopyPlugin({
+      patterns: [{ from: 'public', to: 'public' }],
+    }),
   ],
   ...devServer(develop),
 });
