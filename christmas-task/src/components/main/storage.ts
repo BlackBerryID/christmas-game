@@ -3,10 +3,14 @@ interface IInstance {
 }
 
 interface IStorage {
-  sortMethod?: number;
+  sortMethod?: string;
 }
 
-class LocalStorage {
+interface ILocalStorage {
+  storage: IStorage;
+}
+
+class LocalStorage implements ILocalStorage {
   static instance: IInstance;
   static exists: boolean;
   storage!: IStorage;
@@ -19,3 +23,5 @@ class LocalStorage {
     this.storage = JSON.parse(localStorage.getItem('storage') as string) || {};
   }
 }
+
+export { LocalStorage, ILocalStorage };

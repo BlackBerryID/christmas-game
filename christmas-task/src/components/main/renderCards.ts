@@ -22,7 +22,11 @@ interface ICardDescription {
   favorite: string;
 }
 
-class Cards {
+interface ICards {
+  renderCards(): Promise<void>;
+}
+
+class Cards implements ICards {
   private cardDescription: ICardDescription;
   private cardsInnerWrapper: HTMLElement;
   private sort: ISort;
@@ -44,7 +48,7 @@ class Cards {
     return this.cardDescription[key];
   }
 
-  createCard(cardInfo: IData): HTMLElement {
+  private createCard(cardInfo: IData): HTMLElement {
     const card = document.createElement('div');
     card.classList.add('card');
     const title = document.createElement('h3');
@@ -83,9 +87,10 @@ class Cards {
   async renderCards(): Promise<void> {
     const cardsArray: IData[] = await (await fetch('../public/data.json')).json();
     this.sort.sortCards(cardsArray);
+    this.cardsInnerWrapper.innerHTML = '';
     cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
     console.log(cardsArray);
   }
 }
 
-export { Cards, IData };
+export { Cards, IData, ICards };
