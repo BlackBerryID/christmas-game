@@ -54,6 +54,10 @@ noUiSlider.create(sliderYear as HTMLElement, {
   } else {
     inputYearLeftNumber.value = String(Math.round(+currentValue));
   }
+  const storage = new LocalStorage();
+  storage.storage.sliderYear = [+inputYearLeftNumber.value, +inputYearRightNumber.value];
+  const cards = new Cards();
+  cards.renderCards();
 });
 
 export { sliderAmount, sliderYear };

@@ -91,6 +91,7 @@ class Cards implements ICards {
     let cardsArray: IData[] = await (await fetch('../public/data.json')).json();
     this.sort.sortCards(cardsArray);
     cardsArray = cardsArray.filter((item) => this.filters.filterByCount(item));
+    cardsArray = cardsArray.filter((item) => this.filters.filterByYear(item));
     this.cardsInnerWrapper.innerHTML = '';
     cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
     console.log(cardsArray);

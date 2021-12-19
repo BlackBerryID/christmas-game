@@ -4,6 +4,7 @@ import { Cards, IData } from './renderCards';
 
 interface IFilters {
   filterByCount(item: IData): boolean;
+  filterByYear(item: IData): boolean;
 }
 
 class Filters {
@@ -17,6 +18,13 @@ class Filters {
     const range = this.storage.storage.sliderAmount || [];
     if (!range.length) return true;
     if (+item.count >= range[0] && +item.count <= range[1]) return true;
+    return false;
+  }
+
+  filterByYear(item: IData): boolean {
+    const range = this.storage.storage.sliderYear || [];
+    if (!range.length) return true;
+    if (+item.year >= range[0] && +item.year <= range[1]) return true;
     return false;
   }
 }
