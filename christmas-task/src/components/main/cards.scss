@@ -1,0 +1,48 @@
+.cards {
+  background-color: $color-bg;
+  // margin: 24px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  &_inner-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding-right: 26px; /* Increase/decrease this value for cross-browser compatibility */
+    box-sizing: content-box; /* So the width will be 100% + 26px */
+  }
+}
+
+.card {
+  background-color: $slider;
+  width: 320px;
+  height: 260px;
+  border-radius: 15px;
+  cursor: pointer;
+
+  &_title {
+    padding-top: 10px;
+  }
+
+  &_inner-wrapper {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+  }
+
+  &_img {
+    width: 110px;
+    height: 110px;
+    align-self: center;
+  }
+
+  &_description {
+    font-size: 20px;
+    color: #fff;
+  }
+}
