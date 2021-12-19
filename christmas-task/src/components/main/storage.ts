@@ -6,6 +6,7 @@ interface IStorage {
   sortMethod?: string;
   sliderAmount?: number[];
   sliderYear?: number[];
+  shapes?: Set<string>;
 }
 
 interface ILocalStorage {

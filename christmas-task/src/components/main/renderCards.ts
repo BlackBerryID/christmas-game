@@ -92,6 +92,7 @@ class Cards implements ICards {
     this.sort.sortCards(cardsArray);
     cardsArray = cardsArray.filter((item) => this.filters.filterByCount(item));
     cardsArray = cardsArray.filter((item) => this.filters.filterByYear(item));
+    cardsArray = cardsArray.filter((item) => this.filters.filterByShape(item));
     this.cardsInnerWrapper.innerHTML = '';
     cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
     console.log(cardsArray);

@@ -78,6 +78,7 @@
     background-position: top;
     color: #fff;
     transition: 0.1s;
+    user-select: none;
 
     &_1 {
       background-image: url('./assets/svg/bell.svg');
