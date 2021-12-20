@@ -7,6 +7,7 @@ interface IFilters {
   addListener(): void;
   filterByShape(item: IData): boolean;
   filterByColor(item: IData): boolean;
+  filterBySize(item: IData): boolean;
 }
 
 class Filters implements IFilters {
@@ -15,12 +16,16 @@ class Filters implements IFilters {
   private shapeItems: NodeList;
   private colorField: HTMLElement;
   private colorItems: NodeList;
+  private sizeField: HTMLElement;
+  private sizeItems: NodeList;
 
   constructor() {
     this.shapeField = document.querySelector('.shape_list') as HTMLElement;
     this.shapeItems = document.querySelectorAll('.shape-item') as NodeList;
     this.colorField = document.querySelector('.color_list') as HTMLElement;
     this.colorItems = document.querySelectorAll('.color-item') as NodeList;
+    this.sizeField = document.querySelector('.size_list') as HTMLElement;
+    this.sizeItems = document.querySelectorAll('.size-item') as NodeList;
     this.storage = new LocalStorage();
   }
 
@@ -34,6 +39,28 @@ class Filters implements IFilters {
       if (!(e.target as HTMLElement).classList.contains('color-item')) return;
       this.colorFieldClicksHandler(e);
       cards.renderCards();
+    });
+    this.sizeField.addEventListener('click', (e) => {
+      if (!(e.target as HTMLElement).classList.contains('size-item')) return;
+      this.sizeFieldClicksHandler(e);
+      cards.renderCards();
+    });
+  }
+
+  filterBySize(item: IData): boolean {
+    const sizes = this.storage.storage.sizes;
+    if (!sizes || !sizes!.size) return true;
+    return sizes!.has(item.size);
+  }
+
+  private sizeFieldClicksHandler(e: Event): void {
+    if (!this.storage.storage.sizes) this.storage.storage.sizes = new Set();
+    this.sizeItems.forEach((item) => {
+      if ((item as HTMLInputElement).checked) {
+        this.storage.storage.sizes?.add((item as HTMLElement).dataset.size as string);
+      } else {
+        this.storage.storage.sizes?.delete((item as HTMLElement).dataset.size as string);
+      }
     });
   }
 

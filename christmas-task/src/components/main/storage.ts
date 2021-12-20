@@ -8,6 +8,7 @@ interface IStorage {
   sliderYear?: number[];
   shapes?: Set<string>;
   colors?: Set<string>;
+  sizes?: Set<string>;
 }
 
 interface ILocalStorage {
