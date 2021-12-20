@@ -5,18 +5,53 @@ interface IFilters {
   filterByCount(item: IData): boolean;
   filterByYear(item: IData): boolean;
   addListener(): void;
-  shapeFieldClicksHandler(e: Event): void;
   filterByShape(item: IData): boolean;
+  filterByColor(item: IData): boolean;
 }
 
 class Filters implements IFilters {
   private storage: ILocalStorage;
   private shapeField: HTMLElement;
   private shapeItems: NodeList;
+  private colorField: HTMLElement;
+  private colorItems: NodeList;
+
   constructor() {
     this.shapeField = document.querySelector('.shape_list') as HTMLElement;
     this.shapeItems = document.querySelectorAll('.shape-item') as NodeList;
+    this.colorField = document.querySelector('.color_list') as HTMLElement;
+    this.colorItems = document.querySelectorAll('.color-item') as NodeList;
     this.storage = new LocalStorage();
+  }
+
+  addListener() {
+    const cards = new Cards();
+    this.shapeField.addEventListener('click', (e) => {
+      this.shapeFieldClicksHandler(e);
+      cards.renderCards();
+    });
+    this.colorField.addEventListener('click', (e) => {
+      this.colorFieldClicksHandler(e);
+      cards.renderCards();
+    });
+  }
+
+  filterByColor(item: IData): boolean {
+    const colors = this.storage.storage.colors;
+    if (!colors || !colors!.size) return true;
+    return colors!.has(item.color);
+  }
+
+  private colorFieldClicksHandler(e: Event): void {
+    if (!(e.target as HTMLElement).classList.contains('color-item')) return;
+    if (!this.storage.storage.colors) this.storage.storage.colors = new Set();
+    this.colorItems.forEach((item) => {
+      if ((item as HTMLInputElement).checked) {
+        this.storage.storage.colors?.add((item as HTMLElement).dataset.color as string);
+      } else {
+        this.storage.storage.colors?.delete((item as HTMLElement).dataset.color as string);
+      }
+    });
   }
 
   filterByShape(item: IData): boolean {
@@ -25,7 +60,7 @@ class Filters implements IFilters {
     return shapes!.has(item.shape);
   }
 
-  shapeFieldClicksHandler(e: Event): void {
+  private shapeFieldClicksHandler(e: Event): void {
     if (!(e.target as HTMLElement).classList.contains('shape-item')) return;
     (e.target as HTMLElement).classList.toggle('active');
     if (!this.storage.storage.shapes) this.storage.storage.shapes = new Set();
@@ -35,14 +70,6 @@ class Filters implements IFilters {
       } else {
         this.storage.storage.shapes?.delete((item.textContent as string).toLowerCase());
       }
-    });
-  }
-
-  addListener() {
-    const cards = new Cards();
-    this.shapeField.addEventListener('click', (e) => {
-      this.shapeFieldClicksHandler(e);
-      cards.renderCards();
     });
   }
 
