@@ -38,4 +38,12 @@ p {
 .container {
   max-width: 1600px;
   margin: 0 auto;
+
+  @media (max-width: 1600px) {
+    max-width: 1320px;
+  }
+
+  @media (max-width: 1100px) {
+    max-width: 760px;
+  }
 }
