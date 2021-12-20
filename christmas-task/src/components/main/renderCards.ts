@@ -1,6 +1,7 @@
 import { Sort, ISort } from './sort';
 import { Filters, IFilters } from '../main/filters';
 import { Select, ISelect } from './selectCards';
+import { Search, ISearch } from './search';
 
 interface IData {
   [index: string]: string | boolean;
@@ -34,6 +35,7 @@ class Cards implements ICards {
   private sort: ISort;
   private filters: IFilters;
   private select: ISelect;
+  private search: ISearch;
 
   constructor() {
     this.cardDescription = {
@@ -48,6 +50,7 @@ class Cards implements ICards {
     this.sort = new Sort();
     this.filters = new Filters();
     this.select = new Select();
+    this.search = new Search();
   }
 
   private getCardDescription(key: string): string {
@@ -95,6 +98,7 @@ class Cards implements ICards {
   async renderCards(): Promise<void> {
     let cardsArray: IData[] = await (await fetch('../public/data.json')).json();
     this.sort.sortCards(cardsArray);
+    cardsArray = cardsArray.filter((item) => this.search.filterBySearchInputValue(item));
     cardsArray = cardsArray.filter((item) => this.filters.filterByCount(item));
     cardsArray = cardsArray.filter((item) => this.filters.filterByYear(item));
     cardsArray = cardsArray.filter((item) => this.filters.filterByShape(item));

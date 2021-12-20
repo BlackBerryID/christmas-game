@@ -37,8 +37,6 @@ class Buttons {
     this.colorItems.forEach((item) => ((item as HTMLInputElement).checked = false));
     this.sizeItems.forEach((item) => ((item as HTMLInputElement).checked = false));
     (this.favoriteItem as HTMLInputElement).checked = false;
-    console.log(this.storage.storage);
-    console.log('filters');
   }
 
   resetSettings() {

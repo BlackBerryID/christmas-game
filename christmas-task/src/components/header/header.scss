@@ -48,6 +48,39 @@
     }
   }
 
+  .controls {
+    display: flex;
+  }
+
+  .search {
+    width: 380px;
+    height: 40px;
+    padding: 5px 25px;
+    margin: 10px 0;
+    margin-right: 30px;
+    border-radius: 20px;
+    border: 1px solid #278d9f;
+    color: #fff;
+    font-size: 26px;
+    background-color: rgba(31, 112, 127, 0.3);
+    outline: none;
+    // background-image: url(./assets/svg/search.svg);
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: 330px center;
+    backdrop-filter: blur(6px);
+    align-self: center;
+
+    &::placeholder {
+      color: #fff;
+      opacity: 0.5;
+    }
+
+    &::-webkit-search-cancel-button {
+      filter: invert(1);
+    }
+  }
+
   .counter {
     position: relative;
     width: 64px;
