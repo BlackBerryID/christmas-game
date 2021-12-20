@@ -1,5 +1,7 @@
 import { LocalStorage, ILocalStorage } from '../main/storage';
 import { sliderAmount, sliderYear } from '../noUiSlider/slider';
+import { Cards } from './renderCards';
+import { Filters } from '../main/filters';
 
 class Buttons {
   private resetFiltersButton: HTMLElement;
@@ -9,6 +11,7 @@ class Buttons {
   private colorItems: NodeList;
   private sizeItems: NodeList;
   private favoriteItem: HTMLElement;
+  private select: HTMLElement;
 
   constructor() {
     this.resetFiltersButton = document.querySelector('.filters') as HTMLElement;
@@ -18,6 +21,7 @@ class Buttons {
     this.colorItems = document.querySelectorAll('.color-item') as NodeList;
     this.sizeItems = document.querySelectorAll('.size-item') as NodeList;
     this.favoriteItem = document.querySelector('.favorite-item') as HTMLElement;
+    this.select = document.querySelector('.select_list') as HTMLElement;
   }
 
   addListener() {
@@ -26,7 +30,6 @@ class Buttons {
   }
 
   resetFilters() {
-    console.log(this.storage.storage);
     sliderAmount.noUiSlider?.set([1, 12]);
     sliderYear.noUiSlider?.set([1940, 2020]);
     (this.storage.storage.shapes as Set<string>).clear();
@@ -40,7 +43,13 @@ class Buttons {
   }
 
   resetSettings() {
-    console.log('settings');
+    this.storage.storage = {};
+    localStorage.clear();
+    (this.select as HTMLSelectElement).selectedIndex = 0;
+    const cards = new Cards();
+    cards.renderCards();
+    const filters = new Filters();
+    filters.checkFiltersAfterPageLoad();
   }
 }
 

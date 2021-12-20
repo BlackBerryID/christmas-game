@@ -57,25 +57,40 @@ class Filters implements IFilters {
   }
 
   checkFiltersAfterPageLoad() {
-    const storage = this.storage.storage;
+    const storage = this.storage.getLocalStorage();
     this.shapeItems.forEach((item) => {
       if ((storage.shapes as Set<string>).has(item.textContent!.toLocaleLowerCase())) {
         (item as HTMLElement).classList.add('active');
+      } else {
+        (item as HTMLElement).classList.remove('active');
       }
     });
     this.colorItems.forEach((item) => {
       if ((storage.colors as Set<string>).has((item as HTMLElement).dataset.color!)) {
         (item as HTMLInputElement).checked = true;
+      } else {
+        (item as HTMLInputElement).checked = false;
       }
     });
     this.sizeItems.forEach((item) => {
       if ((storage.sizes as Set<string>).has((item as HTMLElement).dataset.size!)) {
         (item as HTMLInputElement).checked = true;
+      } else {
+        (item as HTMLInputElement).checked = false;
       }
     });
-    if (storage.isFavorite) (this.favoriteItem as HTMLInputElement).checked = true;
-    sliderAmount.noUiSlider?.set(JSON.parse(localStorage.getItem('storage')!).sliderAmount);
-    sliderYear.noUiSlider?.set(JSON.parse(localStorage.getItem('storage')!).sliderYear);
+    if (storage.isFavorite) {
+      (this.favoriteItem as HTMLInputElement).checked = true;
+    } else {
+      (this.favoriteItem as HTMLInputElement).checked = false;
+    }
+    if (localStorage.getItem('storage')) {
+      sliderAmount.noUiSlider?.set(JSON.parse(localStorage.getItem('storage')!).sliderAmount);
+      sliderYear.noUiSlider?.set(JSON.parse(localStorage.getItem('storage')!).sliderYear);
+    } else {
+      sliderAmount.noUiSlider?.set([1, 12]);
+      sliderYear.noUiSlider?.set([1940, 2020]);
+    }
   }
 
   filterByFavorite(item: IData): boolean {

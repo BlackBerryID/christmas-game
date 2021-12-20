@@ -114,7 +114,7 @@ class Cards implements ICards {
     }
     this.cardsInnerWrapper.innerHTML = '';
     cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
-    console.log(cardsArray);
+    // console.log(cardsArray);
   }
 }
 

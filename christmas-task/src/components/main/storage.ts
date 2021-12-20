@@ -13,6 +13,7 @@ interface ILocalStorage {
   storage: IStorage;
   setLocalStorage(): void;
   addListener(): void;
+  getLocalStorage(): IStorage;
 }
 
 class LocalStorage implements ILocalStorage {
@@ -25,15 +26,25 @@ class LocalStorage implements ILocalStorage {
 
     LocalStorage.instance = this;
     LocalStorage.exists = true;
+    this.storage = {};
+    // this.storage.colors = new Set(this.storage.colors);
+    // this.storage.shapes = new Set(this.storage.shapes);
+    // this.storage.sizes = new Set(this.storage.sizes);
+    // this.storage.selected = new Set(this.storage.selected);
+  }
+
+  addListener(): void {
+    window.addEventListener('beforeunload', () => this.setLocalStorage());
+    window.addEventListener('DOMContentLoaded', () => this.getLocalStorage());
+  }
+
+  getLocalStorage(): IStorage {
     this.storage = JSON.parse(localStorage.getItem('storage') as string) || {};
     this.storage.colors = new Set(this.storage.colors);
     this.storage.shapes = new Set(this.storage.shapes);
     this.storage.sizes = new Set(this.storage.sizes);
     this.storage.selected = new Set(this.storage.selected);
-  }
-
-  addListener(): void {
-    window.addEventListener('beforeunload', () => this.setLocalStorage());
+    return this.storage;
   }
 
   setLocalStorage(): void {
