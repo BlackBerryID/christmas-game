@@ -25,76 +25,78 @@
     <main class="main">
       <div class="container main_container">
         <section class="filters-column">
-          <div class="sort">
-            <h3 class="title">Сортировать</h3>
-            <div class="select">
-              <select class="select_list">
-                <option value="0">По названию от "А" до "Я"</option>
-                <option value="1">По названию от "Я" до "А"</option>
-                <option value="2">По количеству по возврастанию</option>
-                <option value="3">По количеству по убыванию</option>
-              </select>
-            </div>
-          </div>
-          <div class="check-filters">
-            <div class="shape">
-              <h3 class="title">Форма</h3>
-              <ul class="shape_list">
-                <li class="shape-item shape-item_1">Колокольчик</li>
-                <li class="shape-item shape-item_2">Шар</li>
-                <li class="shape-item shape-item_3">Шишка</li>
-                <li class="shape-item shape-item_4">Снежинка</li>
-                <li class="shape-item shape-item_5">Фигурка</li>
-              </ul>
-            </div>
-            <div class="color">
-              <h3 class="title">Цвет</h3>
-              <div class="color_list">
-                <input type="checkbox" class="color-item" id="white" data-color="белый" />
-                <label for="white"></label>
-                <input type="checkbox" class="color-item" id="yellow" data-color="желтый" />
-                <label for="yellow"></label>
-                <input type="checkbox" class="color-item" id="red" data-color="красный" />
-                <label for="red"></label>
-                <input type="checkbox" class="color-item" id="blue" data-color="синий" />
-                <label for="blue"></label>
-                <input type="checkbox" class="color-item" id="green" data-color="зелёный" />
-                <label for="green"></label>
+          <div class="filters-column_wrapper">
+            <div class="sort">
+              <h3 class="title">Сортировать</h3>
+              <div class="select">
+                <select class="select_list">
+                  <option value="0">По названию от "А" до "Я"</option>
+                  <option value="1">По названию от "Я" до "А"</option>
+                  <option value="2">По количеству по возврастанию</option>
+                  <option value="3">По количеству по убыванию</option>
+                </select>
               </div>
             </div>
-            <div class="size">
-              <h3 class="title">Размер</h3>
-              <div class="size_list">
-                <input type="checkbox" class="size-item input-item" id="large" data-size="большой" />
-                <label for="large">Большой</label>
-                <input type="checkbox" class="size-item input-item" id="medium" data-size="средний" />
-                <label for="medium">Средний</label>
-                <input type="checkbox" class="size-item input-item" id="small" data-size="малый" />
-                <label for="small">Маленький</label>
+            <div class="check-filters">
+              <div class="shape">
+                <h3 class="title">Форма</h3>
+                <ul class="shape_list">
+                  <li class="shape-item shape-item_1">Колокольчик</li>
+                  <li class="shape-item shape-item_2">Шар</li>
+                  <li class="shape-item shape-item_3">Шишка</li>
+                  <li class="shape-item shape-item_4">Снежинка</li>
+                  <li class="shape-item shape-item_5">Фигурка</li>
+                </ul>
+              </div>
+              <div class="color">
+                <h3 class="title">Цвет</h3>
+                <div class="color_list">
+                  <input type="checkbox" class="color-item" id="white" data-color="белый" />
+                  <label for="white"></label>
+                  <input type="checkbox" class="color-item" id="yellow" data-color="желтый" />
+                  <label for="yellow"></label>
+                  <input type="checkbox" class="color-item" id="red" data-color="красный" />
+                  <label for="red"></label>
+                  <input type="checkbox" class="color-item" id="blue" data-color="синий" />
+                  <label for="blue"></label>
+                  <input type="checkbox" class="color-item" id="green" data-color="зелёный" />
+                  <label for="green"></label>
+                </div>
+              </div>
+              <div class="size">
+                <h3 class="title">Размер</h3>
+                <div class="size_list">
+                  <input type="checkbox" class="size-item input-item" id="large" data-size="большой" />
+                  <label for="large">Большой</label>
+                  <input type="checkbox" class="size-item input-item" id="medium" data-size="средний" />
+                  <label for="medium">Средний</label>
+                  <input type="checkbox" class="size-item input-item" id="small" data-size="малый" />
+                  <label for="small">Маленький</label>
+                </div>
+              </div>
+              <div class="favorite">
+                <input type="checkbox" class="favorite-item input-item" id="favorite" />
+                <label for="favorite">Только любимые</label>
               </div>
             </div>
-            <div class="favorite">
-              <input type="checkbox" class="favorite-item input-item" id="favorite" />
-              <label for="favorite">Только любимые</label>
+            <div class="slider">
+              <h3 class="title">Количество экземпляров</h3>
+              <div class="slider_wrapper">
+                <input class="slider_input slider_input__amount-left" type="number" readonly />
+                <div class="slider_amount"></div>
+                <input class="slider_input slider_input__amount-right" type="number" readonly />
+              </div>
+              <h3 class="title">Год приобретения</h3>
+              <div class="slider_wrapper">
+                <input class="slider_input slider_input__year-left" type="number" readonly />
+                <div class="slider_year"></div>
+                <input class="slider_input slider_input__year-right" type="number" readonly />
+              </div>
             </div>
-          </div>
-          <div class="slider">
-            <h3 class="title">Количество экземпляров</h3>
-            <div class="slider_wrapper">
-              <input class="slider_input slider_input__amount-left" type="number" readonly />
-              <div class="slider_amount"></div>
-              <input class="slider_input slider_input__amount-right" type="number" readonly />
+            <div class="buttons-wrapper">
+              <button class="btn filters">Сбросить фильтры</button>
+              <button class="btn settings">Сбросить настройки</button>
             </div>
-            <h3 class="title">Год приобретения</h3>
-            <div class="slider_wrapper">
-              <input class="slider_input slider_input__year-left" type="number" readonly />
-              <div class="slider_year"></div>
-              <input class="slider_input slider_input__year-right" type="number" readonly />
-            </div>
-          </div>
-          <div class="buttons-wrapper">
-            <button class="btn filters">Сбросить фильтры</button>
-            <button class="btn settings">Сбросить настройки</button>
           </div>
         </section>
 
