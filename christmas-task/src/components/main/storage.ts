@@ -9,6 +9,7 @@ interface IStorage {
   shapes?: Set<string>;
   colors?: Set<string>;
   sizes?: Set<string>;
+  isFavorite?: boolean;
 }
 
 interface ILocalStorage {

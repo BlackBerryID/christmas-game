@@ -8,6 +8,7 @@ interface IFilters {
   filterByShape(item: IData): boolean;
   filterByColor(item: IData): boolean;
   filterBySize(item: IData): boolean;
+  filterByFavorite(item: IData): boolean;
 }
 
 class Filters implements IFilters {
@@ -18,6 +19,7 @@ class Filters implements IFilters {
   private colorItems: NodeList;
   private sizeField: HTMLElement;
   private sizeItems: NodeList;
+  private favoriteItem: HTMLElement;
 
   constructor() {
     this.shapeField = document.querySelector('.shape_list') as HTMLElement;
@@ -26,6 +28,7 @@ class Filters implements IFilters {
     this.colorItems = document.querySelectorAll('.color-item') as NodeList;
     this.sizeField = document.querySelector('.size_list') as HTMLElement;
     this.sizeItems = document.querySelectorAll('.size-item') as NodeList;
+    this.favoriteItem = document.querySelector('.favorite-item') as HTMLElement;
     this.storage = new LocalStorage();
   }
 
@@ -37,14 +40,34 @@ class Filters implements IFilters {
     });
     this.colorField.addEventListener('click', (e) => {
       if (!(e.target as HTMLElement).classList.contains('color-item')) return;
-      this.colorFieldClicksHandler(e);
+      this.colorFieldClicksHandler();
       cards.renderCards();
     });
     this.sizeField.addEventListener('click', (e) => {
       if (!(e.target as HTMLElement).classList.contains('size-item')) return;
-      this.sizeFieldClicksHandler(e);
+      this.sizeFieldClicksHandler();
       cards.renderCards();
     });
+    this.favoriteItem.addEventListener('click', () => {
+      this.favoriteItemClicksHandler();
+      cards.renderCards();
+    });
+  }
+
+  filterByFavorite(item: IData): boolean {
+    const isFavorite = this.storage.storage.isFavorite;
+    if (!isFavorite) return true;
+    return item.favorite;
+  }
+
+  private favoriteItemClicksHandler(): void {
+    if (!this.storage.storage.isFavorite) this.storage.storage.isFavorite = false;
+
+    if ((this.favoriteItem as HTMLInputElement).checked) {
+      this.storage.storage.isFavorite = true;
+    } else {
+      this.storage.storage.isFavorite = false;
+    }
   }
 
   filterBySize(item: IData): boolean {
@@ -53,7 +76,7 @@ class Filters implements IFilters {
     return sizes!.has(item.size);
   }
 
-  private sizeFieldClicksHandler(e: Event): void {
+  private sizeFieldClicksHandler(): void {
     if (!this.storage.storage.sizes) this.storage.storage.sizes = new Set();
     this.sizeItems.forEach((item) => {
       if ((item as HTMLInputElement).checked) {
@@ -70,7 +93,7 @@ class Filters implements IFilters {
     return colors!.has(item.color);
   }
 
-  private colorFieldClicksHandler(e: Event): void {
+  private colorFieldClicksHandler(): void {
     if (!this.storage.storage.colors) this.storage.storage.colors = new Set();
     this.colorItems.forEach((item) => {
       if ((item as HTMLInputElement).checked) {
