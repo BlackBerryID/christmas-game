@@ -1,5 +1,6 @@
 import { LocalStorage, ILocalStorage } from './storage';
 import { Cards, IData } from './renderCards';
+import { sliderAmount, sliderYear } from '../noUiSlider/slider';
 
 interface IFilters {
   filterByCount(item: IData): boolean;
@@ -73,6 +74,8 @@ class Filters implements IFilters {
       }
     });
     if (storage.isFavorite) (this.favoriteItem as HTMLInputElement).checked = true;
+    sliderAmount.noUiSlider?.set(JSON.parse(localStorage.getItem('storage')!).sliderAmount);
+    sliderYear.noUiSlider?.set(JSON.parse(localStorage.getItem('storage')!).sliderYear);
   }
 
   filterByFavorite(item: IData): boolean {
