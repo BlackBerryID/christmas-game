@@ -52,6 +52,27 @@ class Filters implements IFilters {
       this.favoriteItemClicksHandler();
       cards.renderCards();
     });
+    window.addEventListener('DOMContentLoaded', () => this.checkFiltersAfterPageLoad());
+  }
+
+  checkFiltersAfterPageLoad() {
+    const storage = this.storage.storage;
+    this.shapeItems.forEach((item) => {
+      if ((storage.shapes as Set<string>).has(item.textContent!.toLocaleLowerCase())) {
+        (item as HTMLElement).classList.add('active');
+      }
+    });
+    this.colorItems.forEach((item) => {
+      if ((storage.colors as Set<string>).has((item as HTMLElement).dataset.color!)) {
+        (item as HTMLInputElement).checked = true;
+      }
+    });
+    this.sizeItems.forEach((item) => {
+      if ((storage.sizes as Set<string>).has((item as HTMLElement).dataset.size!)) {
+        (item as HTMLInputElement).checked = true;
+      }
+    });
+    if (storage.isFavorite) (this.favoriteItem as HTMLInputElement).checked = true;
   }
 
   filterByFavorite(item: IData): boolean {
