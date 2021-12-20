@@ -27,7 +27,7 @@ class Select implements ISelect {
 
   isSelectedCard(item: IData): boolean {
     if (!this.storage.storage.selected) return false;
-    if (this.storage.storage.selected.has(item.num)) return true;
+    if ((this.storage.storage.selected as Set<string>).has(item.num)) return true;
     return false;
   }
 
@@ -37,7 +37,7 @@ class Select implements ISelect {
       if ((item as HTMLElement).classList.contains('card')) {
         if ((item as HTMLElement).classList.contains('active')) {
           (item as HTMLElement).classList.remove('active');
-          this.storage.storage.selected?.delete((item as HTMLElement).id);
+          (this.storage.storage.selected as Set<string>).delete((item as HTMLElement).id);
         } else {
           if (+this.counter.textContent! >= 20) {
             (item as HTMLElement).classList.add('message');
@@ -45,9 +45,9 @@ class Select implements ISelect {
             return;
           }
           (item as HTMLElement).classList.add('active');
-          this.storage.storage.selected?.add((item as HTMLElement).id);
+          (this.storage.storage.selected as Set<string>).add((item as HTMLElement).id);
         }
-        this.counter.textContent = String(this.storage.storage.selected?.size);
+        this.counter.textContent = String((this.storage.storage.selected as Set<string>).size);
       }
     });
   }

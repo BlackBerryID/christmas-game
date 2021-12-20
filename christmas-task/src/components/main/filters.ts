@@ -72,42 +72,42 @@ class Filters implements IFilters {
 
   filterBySize(item: IData): boolean {
     const sizes = this.storage.storage.sizes;
-    if (!sizes || !sizes!.size) return true;
-    return sizes!.has(item.size);
+    if (!sizes || !(sizes as Set<string>).size) return true;
+    return (sizes as Set<string>).has(item.size);
   }
 
   private sizeFieldClicksHandler(): void {
     if (!this.storage.storage.sizes) this.storage.storage.sizes = new Set();
     this.sizeItems.forEach((item) => {
       if ((item as HTMLInputElement).checked) {
-        this.storage.storage.sizes?.add((item as HTMLElement).dataset.size as string);
+        (this.storage.storage.sizes as Set<string>).add((item as HTMLElement).dataset.size as string);
       } else {
-        this.storage.storage.sizes?.delete((item as HTMLElement).dataset.size as string);
+        (this.storage.storage.sizes as Set<string>).delete((item as HTMLElement).dataset.size as string);
       }
     });
   }
 
   filterByColor(item: IData): boolean {
     const colors = this.storage.storage.colors;
-    if (!colors || !colors!.size) return true;
-    return colors!.has(item.color);
+    if (!colors || !(colors as Set<string>).size) return true;
+    return (colors as Set<string>).has(item.color);
   }
 
   private colorFieldClicksHandler(): void {
     if (!this.storage.storage.colors) this.storage.storage.colors = new Set();
     this.colorItems.forEach((item) => {
       if ((item as HTMLInputElement).checked) {
-        this.storage.storage.colors?.add((item as HTMLElement).dataset.color as string);
+        (this.storage.storage.colors as Set<string>).add((item as HTMLElement).dataset.color as string);
       } else {
-        this.storage.storage.colors?.delete((item as HTMLElement).dataset.color as string);
+        (this.storage.storage.colors as Set<string>).delete((item as HTMLElement).dataset.color as string);
       }
     });
   }
 
   filterByShape(item: IData): boolean {
     const shapes = this.storage.storage.shapes;
-    if (!shapes || !shapes!.size) return true;
-    return shapes!.has(item.shape);
+    if (!shapes || !(shapes as Set<string>).size) return true;
+    return (shapes as Set<string>).has(item.shape);
   }
 
   private shapeFieldClicksHandler(e: Event): void {
@@ -116,9 +116,9 @@ class Filters implements IFilters {
     if (!this.storage.storage.shapes) this.storage.storage.shapes = new Set();
     this.shapeItems.forEach((item) => {
       if ((item as HTMLElement).classList.contains('active')) {
-        this.storage.storage.shapes?.add((item.textContent as string).toLowerCase());
+        (this.storage.storage.shapes as Set<string>).add((item.textContent as string).toLowerCase());
       } else {
-        this.storage.storage.shapes?.delete((item.textContent as string).toLowerCase());
+        (this.storage.storage.shapes as Set<string>).delete((item.textContent as string).toLowerCase());
       }
     });
   }

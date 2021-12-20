@@ -29,9 +29,9 @@ class Buttons {
     console.log(this.storage.storage);
     sliderAmount.noUiSlider?.set([1, 12]);
     sliderYear.noUiSlider?.set([1940, 2020]);
-    this.storage.storage.shapes?.clear();
-    this.storage.storage.colors?.clear();
-    this.storage.storage.sizes?.clear();
+    (this.storage.storage.shapes as Set<string>).clear();
+    (this.storage.storage.colors as Set<string>).clear();
+    (this.storage.storage.sizes as Set<string>).clear();
     this.storage.storage.isFavorite = false;
     this.shapeItems.forEach((item) => (item as HTMLElement).classList.remove('active'));
     this.colorItems.forEach((item) => ((item as HTMLInputElement).checked = false));

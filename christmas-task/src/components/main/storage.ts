@@ -1,24 +1,22 @@
-interface IInstance {
-  storage: IStorage;
-}
-
 interface IStorage {
   sortMethod?: string;
   sliderAmount?: number[];
   sliderYear?: number[];
-  shapes?: Set<string>;
-  colors?: Set<string>;
-  sizes?: Set<string>;
+  shapes?: Set<string> | string[];
+  colors?: Set<string> | string[];
+  sizes?: Set<string> | string[];
   isFavorite?: boolean;
-  selected?: Set<string>;
+  selected?: Set<string> | string[];
 }
 
 interface ILocalStorage {
   storage: IStorage;
+  setLocalStorage(): void;
+  addListener(): void;
 }
 
 class LocalStorage implements ILocalStorage {
-  static instance: IInstance;
+  static instance: ILocalStorage;
   static exists: boolean;
   storage!: IStorage;
 
@@ -28,6 +26,22 @@ class LocalStorage implements ILocalStorage {
     LocalStorage.instance = this;
     LocalStorage.exists = true;
     this.storage = JSON.parse(localStorage.getItem('storage') as string) || {};
+    this.storage.colors = new Set(this.storage.colors);
+    this.storage.shapes = new Set(this.storage.shapes);
+    this.storage.sizes = new Set(this.storage.sizes);
+    this.storage.selected = new Set(this.storage.selected);
+  }
+
+  addListener(): void {
+    window.addEventListener('beforeunload', () => this.setLocalStorage());
+  }
+
+  setLocalStorage(): void {
+    this.storage.colors = Array.from(this.storage.colors!);
+    this.storage.shapes = Array.from(this.storage.shapes!);
+    this.storage.sizes = Array.from(this.storage.sizes!);
+    this.storage.selected = Array.from(this.storage.selected!);
+    localStorage.setItem('storage', JSON.stringify(this.storage));
   }
 }
 

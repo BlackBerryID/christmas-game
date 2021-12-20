@@ -3,6 +3,7 @@ import { Filters } from '../main/filters';
 import { Select } from '../main/selectCards';
 import { Buttons } from '../main/buttons';
 import { Search } from '../main/search';
+import { LocalStorage } from '../main/storage';
 
 const sort = new Sort();
 sort.addListener();
@@ -18,3 +19,6 @@ buttons.addListener();
 
 const search = new Search();
 search.addListener();
+
+const storage = new LocalStorage();
+storage.addListener();
