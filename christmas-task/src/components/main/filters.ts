@@ -31,6 +31,7 @@ class Filters implements IFilters {
       cards.renderCards();
     });
     this.colorField.addEventListener('click', (e) => {
+      if (!(e.target as HTMLElement).classList.contains('color-item')) return;
       this.colorFieldClicksHandler(e);
       cards.renderCards();
     });
@@ -43,7 +44,6 @@ class Filters implements IFilters {
   }
 
   private colorFieldClicksHandler(e: Event): void {
-    if (!(e.target as HTMLElement).classList.contains('color-item')) return;
     if (!this.storage.storage.colors) this.storage.storage.colors = new Set();
     this.colorItems.forEach((item) => {
       if ((item as HTMLInputElement).checked) {
