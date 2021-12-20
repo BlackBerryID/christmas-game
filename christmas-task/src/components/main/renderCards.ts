@@ -1,5 +1,6 @@
 import { Sort, ISort } from './sort';
 import { Filters, IFilters } from '../main/filters';
+import { Select, ISelect } from './selectCards';
 
 interface IData {
   [index: string]: string | boolean;
@@ -32,6 +33,7 @@ class Cards implements ICards {
   private cardsInnerWrapper: HTMLElement;
   private sort: ISort;
   private filters: IFilters;
+  private select: ISelect;
 
   constructor() {
     this.cardDescription = {
@@ -45,6 +47,7 @@ class Cards implements ICards {
     this.cardsInnerWrapper = document.querySelector('.cards_inner-wrapper') as HTMLElement;
     this.sort = new Sort();
     this.filters = new Filters();
+    this.select = new Select();
   }
 
   private getCardDescription(key: string): string {
@@ -54,6 +57,8 @@ class Cards implements ICards {
   private createCard(cardInfo: IData): HTMLElement {
     const card = document.createElement('div');
     card.classList.add('card');
+    card.id = cardInfo.num;
+    if (this.select.isSelectedCard(cardInfo)) card.classList.add('active');
     const title = document.createElement('h3');
     title.classList.add('title', 'card_title');
     title.textContent = `${cardInfo.name}`;

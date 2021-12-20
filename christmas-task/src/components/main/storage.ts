@@ -10,6 +10,7 @@ interface IStorage {
   colors?: Set<string>;
   sizes?: Set<string>;
   isFavorite?: boolean;
+  selected?: Set<string>;
 }
 
 interface ILocalStorage {

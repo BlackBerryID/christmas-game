@@ -20,12 +20,43 @@
 }
 
 .card {
+  position: relative;
   background-color: $color-bg;
   width: 320px;
   height: 260px;
   border: 2px solid $slider;
   border-radius: 15px;
   cursor: pointer;
+  transition: 0.1s;
+  user-select: none;
+
+  &.active {
+    border: 2px solid gold;
+  }
+
+  &::before {
+    position: absolute;
+    display: none;
+    align-items: center;
+    content: 'Извините, все слоты заполнены';
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgb(51, 51, 51, 0.9);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 34px;
+    text-align: center;
+  }
+
+  &.message {
+    pointer-events: none;
+  }
+
+  &.message::before {
+    display: flex;
+  }
 
   &_title {
     padding-top: 10px;
