@@ -32,7 +32,6 @@ class Buttons {
     this.storage.storage.shapes?.clear();
     this.storage.storage.colors?.clear();
     this.storage.storage.sizes?.clear();
-    this.storage.storage.selected?.clear();
     this.storage.storage.isFavorite = false;
     this.shapeItems.forEach((item) => (item as HTMLElement).classList.remove('active'));
     this.colorItems.forEach((item) => ((item as HTMLInputElement).checked = false));
