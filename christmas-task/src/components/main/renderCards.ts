@@ -36,6 +36,7 @@ class Cards implements ICards {
   private filters: IFilters;
   private select: ISelect;
   private search: ISearch;
+  private cardsSection: HTMLElement;
 
   constructor() {
     this.cardDescription = {
@@ -46,6 +47,7 @@ class Cards implements ICards {
       size: 'Размер: ',
       favorite: 'Любимая: ',
     };
+    this.cardsSection = document.querySelector('.cards') as HTMLElement;
     this.cardsInnerWrapper = document.querySelector('.cards_inner-wrapper') as HTMLElement;
     this.sort = new Sort();
     this.filters = new Filters();
@@ -105,6 +107,11 @@ class Cards implements ICards {
     cardsArray = cardsArray.filter((item) => this.filters.filterByColor(item));
     cardsArray = cardsArray.filter((item) => this.filters.filterBySize(item));
     cardsArray = cardsArray.filter((item) => this.filters.filterByFavorite(item));
+    if (!cardsArray.length) {
+      this.cardsSection.classList.add('no-match');
+    } else {
+      this.cardsSection.classList.remove('no-match');
+    }
     this.cardsInnerWrapper.innerHTML = '';
     cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
     console.log(cardsArray);

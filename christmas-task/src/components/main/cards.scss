@@ -1,9 +1,33 @@
 .cards {
   // background-color: $color-bg;
+  position: relative;
   padding: 24px 0;
   width: 100%;
   height: 100%;
   overflow: hidden;
+
+  &.no-match::before {
+    display: flex;
+  }
+
+  &::before {
+    content: 'Извините, совпадений не обнаружено';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+    height: 50%;
+    z-index: 10;
+    background-color: $color-bg;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 34px;
+    text-align: center;
+  }
 
   &_inner-wrapper {
     display: flex;
