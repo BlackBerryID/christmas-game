@@ -27,10 +27,6 @@ class LocalStorage implements ILocalStorage {
     LocalStorage.instance = this;
     LocalStorage.exists = true;
     this.storage = {};
-    // this.storage.colors = new Set(this.storage.colors);
-    // this.storage.shapes = new Set(this.storage.shapes);
-    // this.storage.sizes = new Set(this.storage.sizes);
-    // this.storage.selected = new Set(this.storage.selected);
   }
 
   addListener(): void {

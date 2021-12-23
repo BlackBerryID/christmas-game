@@ -2,15 +2,16 @@ import { Cards, IData } from './renderCards';
 import { LocalStorage, ILocalStorage } from './storage';
 
 interface ISort {
+  select: HTMLSelectElement;
   sortCards(array: IData[]): IData[];
 }
 
 class Sort implements ISort {
-  private select: HTMLElement;
+  public select: HTMLSelectElement;
   private storage: ILocalStorage;
 
   constructor() {
-    this.select = document.querySelector('.select_list') as HTMLElement;
+    this.select = document.querySelector('.select_list') as HTMLSelectElement;
     this.storage = new LocalStorage();
   }
 

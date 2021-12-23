@@ -2,6 +2,7 @@ import { Sort, ISort } from './sort';
 import { Filters, IFilters } from '../main/filters';
 import { Select, ISelect } from './selectCards';
 import { Search, ISearch } from './search';
+import { LocalStorage, ILocalStorage } from './storage';
 
 interface IData {
   [index: string]: string | boolean;
@@ -36,7 +37,9 @@ class Cards implements ICards {
   private filters: IFilters;
   private select: ISelect;
   private search: ISearch;
+  private storage: ILocalStorage;
   private cardsSection: HTMLElement;
+  private selectedCardsNumber: HTMLElement;
 
   constructor() {
     this.cardDescription = {
@@ -49,10 +52,12 @@ class Cards implements ICards {
     };
     this.cardsSection = document.querySelector('.cards') as HTMLElement;
     this.cardsInnerWrapper = document.querySelector('.cards_inner-wrapper') as HTMLElement;
+    this.selectedCardsNumber = document.querySelector('.counter_number') as HTMLElement;
     this.sort = new Sort();
     this.filters = new Filters();
     this.select = new Select();
     this.search = new Search();
+    this.storage = new LocalStorage();
   }
 
   private getCardDescription(key: string): string {
@@ -114,7 +119,8 @@ class Cards implements ICards {
     }
     this.cardsInnerWrapper.innerHTML = '';
     cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
-    // console.log(cardsArray);
+    this.selectedCardsNumber.textContent = String((this.storage.storage.selected as Set<string>).size) as string;
+    this.sort.select.value = this.storage.storage.sortMethod || '0';
   }
 }
 
