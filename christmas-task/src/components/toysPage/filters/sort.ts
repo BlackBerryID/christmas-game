@@ -1,5 +1,5 @@
 import { Cards, IData } from '../cards/renderCards';
-import { LocalStorage, ILocalStorage } from '../localStorage/storage';
+import { LocalStorage, ILocalStorage } from '../../localStorage/storage';
 
 interface ISort {
   select: HTMLSelectElement;

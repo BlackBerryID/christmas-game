@@ -1,4 +1,4 @@
-import { LocalStorage, ILocalStorage } from '../localStorage/storage';
+import { LocalStorage, ILocalStorage } from '../../localStorage/storage';
 import { sliderAmount, sliderYear } from '../noUiSlider/slider';
 import { Cards } from '../cards/renderCards';
 import { Filters } from './filters';

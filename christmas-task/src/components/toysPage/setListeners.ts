@@ -1,7 +1,7 @@
-import { Sort } from '../filters/sort';
-import { Filters } from '../filters/filters';
-import { Select } from '../cards/selectCards';
-import { Buttons } from '../filters/buttons';
+import { Sort } from './filters/sort';
+import { Filters } from './filters/filters';
+import { Select } from './cards/selectCards';
+import { Buttons } from './filters/buttons';
 import { Search } from '../header/search';
 import { LocalStorage } from '../localStorage/storage';
 

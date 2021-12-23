@@ -1,4 +1,4 @@
-import { Cards, IData } from '../cards/renderCards';
+import { Cards, IData } from '../toysPage/cards/renderCards';
 
 interface ISearch {
   filterBySearchInputValue(item: IData): boolean;
