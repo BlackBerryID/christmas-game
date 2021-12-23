@@ -22,26 +22,19 @@ class Sort implements ISort {
   }
 
   addListener() {
-    this.select.addEventListener('change', this.changeOption.bind(this));
+    this.select.addEventListener('change', () => this.changeOption());
   }
 
   sortCards(array: IData[]): IData[] {
     const method = this.storage.storage.sortMethod || '0';
-    let result;
-    switch (method) {
-      case '0':
-        result = array.sort((a, b) => (a.name > b.name ? 1 : -1));
-        break;
-      case '1':
-        result = array.sort((a, b) => (a.name > b.name ? -1 : 1));
-        break;
-      case '2':
-        result = array.sort((a, b) => +a.count - +b.count);
-        break;
-      case '3':
-        result = array.sort((a, b) => +b.count - +a.count);
-        break;
-    }
+    let result =
+      method === '0'
+        ? array.sort((a, b) => (a.name > b.name ? 1 : -1))
+        : method === '1'
+        ? array.sort((a, b) => (a.name > b.name ? -1 : 1))
+        : method === '2'
+        ? array.sort((a, b) => +a.count - +b.count)
+        : array.sort((a, b) => +b.count - +a.count);
     return result as IData[];
   }
 }

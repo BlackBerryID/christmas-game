@@ -16,14 +16,14 @@ interface IData {
   favorite: boolean;
 }
 
-interface ICardDescription {
-  [index: string]: string;
-  count: string;
-  year: string;
-  shape: string;
-  color: string;
-  size: string;
-  favorite: string;
+interface ICardDescription<T> {
+  [index: string]: T;
+  count: T;
+  year: T;
+  shape: T;
+  color: T;
+  size: T;
+  favorite: T;
 }
 
 interface ICards {
@@ -31,10 +31,10 @@ interface ICards {
 }
 
 class Cards implements ICards {
-  private cardDescription: ICardDescription;
+  static cardDescription: ICardDescription<string>;
   private cardsInnerWrapper: HTMLElement;
   private sort: ISort;
-  private filters: IFilters;
+  private filters: IFilters<Boolean>;
   private select: ISelect;
   private search: ISearch;
   private storage: ILocalStorage;
@@ -42,7 +42,7 @@ class Cards implements ICards {
   private selectedCardsNumber: HTMLElement;
 
   constructor() {
-    this.cardDescription = {
+    Cards.cardDescription = {
       count: 'Количество: ',
       year: 'Год покупки: ',
       shape: 'Форма: ',
@@ -61,7 +61,7 @@ class Cards implements ICards {
   }
 
   private getCardDescription(key: string): string {
-    return this.cardDescription[key];
+    return Cards.cardDescription[key];
   }
 
   private createCard(cardInfo: IData): HTMLElement {
@@ -118,9 +118,9 @@ class Cards implements ICards {
       this.cardsSection.classList.remove('no-match');
     }
     this.cardsInnerWrapper.innerHTML = '';
-    cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
     this.selectedCardsNumber.textContent = String((this.storage.storage.selected as Set<string>).size) as string;
-    this.sort.select.value = this.storage.storage.sortMethod || '0';
+    this.sort.select.selectedIndex = +this.storage.storage.sortMethod! || 0;
+    cardsArray.forEach((item) => this.cardsInnerWrapper.append(this.createCard(item)));
   }
 }
 

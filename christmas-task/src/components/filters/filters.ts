@@ -2,17 +2,17 @@ import { LocalStorage, ILocalStorage } from '../localStorage/storage';
 import { Cards, IData } from '../cards/renderCards';
 import { sliderAmount, sliderYear } from '../noUiSlider/slider';
 
-interface IFilters {
-  filterByCount(item: IData): boolean;
-  filterByYear(item: IData): boolean;
+interface IFilters<T> {
+  filterByCount(item: IData): T;
+  filterByYear(item: IData): T;
+  filterByShape(item: IData): T;
+  filterByColor(item: IData): T;
+  filterBySize(item: IData): T;
+  filterByFavorite(item: IData): T;
   addListener(): void;
-  filterByShape(item: IData): boolean;
-  filterByColor(item: IData): boolean;
-  filterBySize(item: IData): boolean;
-  filterByFavorite(item: IData): boolean;
 }
 
-class Filters implements IFilters {
+class Filters implements IFilters<Boolean> {
   private storage: ILocalStorage;
   private shapeField: HTMLElement;
   private shapeItems: NodeList;
@@ -88,6 +88,7 @@ class Filters implements IFilters {
       sliderAmount.noUiSlider?.set(JSON.parse(localStorage.getItem('storage')!).sliderAmount);
       sliderYear.noUiSlider?.set(JSON.parse(localStorage.getItem('storage')!).sliderYear);
     } else {
+      // initial values
       sliderAmount.noUiSlider?.set([1, 12]);
       sliderYear.noUiSlider?.set([1940, 2020]);
     }

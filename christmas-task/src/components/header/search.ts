@@ -1,8 +1,8 @@
 import { Cards, IData } from '../cards/renderCards';
 
 interface ISearch {
-  addListener(): void;
   filterBySearchInputValue(item: IData): boolean;
+  addListener(): void;
   searchInputHandler(): void;
 }
 
