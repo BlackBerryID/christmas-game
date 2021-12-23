@@ -1,4 +1,4 @@
-import { Cards, IData } from './renderCards';
+import { Cards, IData } from '../cards/renderCards';
 
 interface ISearch {
   addListener(): void;

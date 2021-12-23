@@ -1,7 +1,7 @@
 import * as noUiSlider from 'nouislider';
 import 'noUiSlider/dist/nouislider.css';
-import { Cards } from '../main/renderCards';
-import { LocalStorage } from '../main/storage';
+import { Cards } from '../cards/renderCards';
+import { LocalStorage } from '../localStorage/storage';
 
 const sliderAmount = document.querySelector('.slider_amount') as noUiSlider.target;
 const inputAmountLeftNumber = document.querySelector('.slider_input__amount-left') as HTMLInputElement;

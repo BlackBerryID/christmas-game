@@ -1,5 +1,5 @@
-import { LocalStorage, ILocalStorage } from './storage';
-import { Cards, IData } from './renderCards';
+import { LocalStorage, ILocalStorage } from '../localStorage/storage';
+import { Cards, IData } from '../cards/renderCards';
 import { sliderAmount, sliderYear } from '../noUiSlider/slider';
 
 interface IFilters {

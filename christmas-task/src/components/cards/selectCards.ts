@@ -1,4 +1,4 @@
-import { LocalStorage, ILocalStorage } from './storage';
+import { LocalStorage, ILocalStorage } from '../localStorage/storage';
 import { IData } from './renderCards';
 
 interface ISelect {

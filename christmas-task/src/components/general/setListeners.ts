@@ -1,9 +1,9 @@
-import { Sort } from '../main/sort';
-import { Filters } from '../main/filters';
-import { Select } from '../main/selectCards';
-import { Buttons } from '../main/buttons';
-import { Search } from '../main/search';
-import { LocalStorage } from '../main/storage';
+import { Sort } from '../filters/sort';
+import { Filters } from '../filters/filters';
+import { Select } from '../cards/selectCards';
+import { Buttons } from '../filters/buttons';
+import { Search } from '../header/search';
+import { LocalStorage } from '../localStorage/storage';
 
 const sort = new Sort();
 sort.addListener();

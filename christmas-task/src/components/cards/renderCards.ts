@@ -1,8 +1,8 @@
-import { Sort, ISort } from './sort';
-import { Filters, IFilters } from '../main/filters';
+import { Sort, ISort } from '../filters/sort';
+import { Filters, IFilters } from '../filters/filters';
 import { Select, ISelect } from './selectCards';
-import { Search, ISearch } from './search';
-import { LocalStorage, ILocalStorage } from './storage';
+import { Search, ISearch } from '../header/search';
+import { LocalStorage, ILocalStorage } from '../localStorage/storage';
 
 interface IData {
   [index: string]: string | boolean;

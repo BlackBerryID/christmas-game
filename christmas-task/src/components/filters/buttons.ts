@@ -1,7 +1,7 @@
-import { LocalStorage, ILocalStorage } from '../main/storage';
+import { LocalStorage, ILocalStorage } from '../localStorage/storage';
 import { sliderAmount, sliderYear } from '../noUiSlider/slider';
-import { Cards } from './renderCards';
-import { Filters } from '../main/filters';
+import { Cards } from '../cards/renderCards';
+import { Filters } from './filters';
 
 class Buttons {
   private resetFiltersButton: HTMLElement;
