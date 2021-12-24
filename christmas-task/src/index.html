@@ -23,7 +23,7 @@
       </div>
     </header>
     <main class="main">
-      <div class="page start-page container">
+      <div class="page start-page container hide remove">
         <div class="game-name">Помогите бабушке нарядить ёлку</div>
         <button class="start-btn btn" data-page="toys">Начать</button>
       </div>
@@ -107,6 +107,64 @@
         <section class="cards">
           <div class="cards_inner-wrapper"></div>
         </section>
+      </div>
+      <div class="page tree-page container">
+        <div class="settings-column">
+          <div class="settings-column_wrapper">
+            <div class="settings-column_buttons">
+              <button class="sound-btn"></button>
+              <button class="snow-btn"></button>
+            </div>
+            <div class="choose-tree">
+              <div class="choose-tree_title title">Выбери ёлку</div>
+              <ul class="choose-tree_cards">
+                <li class="choose-tree_card">
+                  <img src="./assets/tree/1.png" alt="christmas tree" class="choose-tree_img" />
+                </li>
+                <li class="choose-tree_card">
+                  <img src="./assets/tree/2.png" alt="christmas tree" class="choose-tree_img" />
+                </li>
+                <li class="choose-tree_card">
+                  <img src="./assets/tree/3.png" alt="christmas tree" class="choose-tree_img" />
+                </li>
+                <li class="choose-tree_card">
+                  <img src="./assets/tree/5.png" alt="christmas tree" class="choose-tree_img" />
+                </li>
+              </ul>
+            </div>
+            <div class="choose-background">
+              <div class="choose-background_title title">Выберите фон</div>
+              <ul class="choose-background_cards">
+                <li class="choose-background_card choose-background_card__1"></li>
+                <li class="choose-background_card choose-background_card__2"></li>
+                <li class="choose-background_card choose-background_card__3"></li>
+                <li class="choose-background_card choose-background_card__4"></li>
+                <li class="choose-background_card choose-background_card__5"></li>
+                <li class="choose-background_card choose-background_card__6"></li>
+                <li class="choose-background_card choose-background_card__7"></li>
+                <li class="choose-background_card choose-background_card__8"></li>
+              </ul>
+            </div>
+            <div class="garland">
+              <div class="garland_title title">Гирлянда</div>
+              <div class="garland_inner-wrapper">
+                <div class="garland_buttons-wrapper">
+                  <button class="garland_btn multicolor-btn" data-color="multicolor"></button>
+                  <button class="garland_btn red-btn" data-color="red"></button>
+                  <button class="garland_btn yellow-btn" data-color="yellow"></button>
+                  <button class="garland_btn green-btn" data-color="green"></button>
+                  <button class="garland_btn blue-btn" data-color="blue"></button>
+                </div>
+                <div class="switch-wrapper">
+                  <label class="switch">
+                    <input class="checkbox" data-name="time" type="checkbox" id="checkBox" />
+                    <span class="garland_slider"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
     <footer class="footer">

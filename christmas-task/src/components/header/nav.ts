@@ -7,12 +7,14 @@ interface INavigation {
 class Navigation implements INavigation {
   private startPage: HTMLElement;
   private toysPage: HTMLElement;
+  private treePage: HTMLElement;
   private navBar: HTMLElement;
   private navLinks: HTMLElement[];
 
   constructor() {
     this.startPage = document.querySelector('.start-page') as HTMLElement;
     this.toysPage = document.querySelector('.toys-page') as HTMLElement;
+    this.treePage = document.querySelector('.tree-page') as HTMLElement;
     this.navBar = document.querySelector('.nav') as HTMLElement;
     this.navLinks = Array.from(document.querySelectorAll('.nav_link')) as HTMLElement[];
   }
@@ -36,7 +38,7 @@ class Navigation implements INavigation {
   }
 
   openPage(pageName: string): void {
-    const targetPage = pageName === 'start' ? this.startPage : this.toysPage;
+    const targetPage = pageName === 'start' ? this.startPage : pageName === 'toys' ? this.toysPage : this.treePage;
     const pages = document.querySelectorAll('.page');
     const currentPage = Array.from(pages).filter((item) => !item.classList.contains('hide'))[0];
     currentPage.classList.add('hide');

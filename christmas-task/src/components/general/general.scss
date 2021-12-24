@@ -53,20 +53,23 @@ p {
 }
 
 .start-page,
-.toys-page {
+.toys-page,
+.tree-page {
   display: flex;
   height: calc(100vh - 200px);
   transition: visibility 0.4s, opacity 0.4s;
 }
 
 .start-page.hide,
-.toys-page.hide {
+.toys-page.hide,
+.tree-page.hide {
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
 }
 
 .start-page.remove,
-.toys-page.remove {
+.toys-page.remove,
+.tree-page.remove {
   display: none;
 }
