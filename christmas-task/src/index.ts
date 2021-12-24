@@ -1,6 +1,6 @@
 import './index.scss';
 import './components/toysPage/noUiSlider/slider';
-import './components/toysPage/setListeners';
+import './components/general/setListeners';
 import { Cards } from './components/toysPage/cards/renderCards';
 import './components/general/console';
 

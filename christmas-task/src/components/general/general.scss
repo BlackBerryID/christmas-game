@@ -20,6 +20,7 @@ body {
   min-height: 100vh;
   min-width: 100vw;
   backdrop-filter: blur(3px);
+  // background-color: rgba(22, 41, 41, 0.5);
 }
 
 a {
@@ -50,9 +51,23 @@ p {
 
 .main {
   background-color: rgba(22, 41, 41, 0.5);
+}
 
-  &_container {
-    display: flex;
-    height: calc(100vh - 200px);
-  }
+.start-page,
+.toys-page {
+  display: flex;
+  height: calc(100vh - 200px);
+  transition: visibility 0.4s, opacity 0.4s;
+}
+
+.start-page.hide,
+.toys-page.hide {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.start-page.remove,
+.toys-page.remove {
+  display: none;
 }

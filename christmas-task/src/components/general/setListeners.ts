@@ -1,9 +1,10 @@
-import { Sort } from './filters/sort';
-import { Filters } from './filters/filters';
-import { Select } from './cards/selectCards';
-import { Buttons } from './filters/buttons';
+import { Sort } from '../toysPage/filters/sort';
+import { Filters } from '../toysPage/filters/filters';
+import { Select } from '../toysPage/cards/selectCards';
+import { Buttons } from '../toysPage/filters/buttons';
 import { Search } from '../header/search';
 import { LocalStorage } from '../localStorage/storage';
+import Start from '../startPage/start';
 
 const sort = new Sort();
 sort.addListener();
@@ -22,3 +23,6 @@ search.addListener();
 
 const storage = new LocalStorage();
 storage.addListener();
+
+const start = new Start();
+start.addListener();
