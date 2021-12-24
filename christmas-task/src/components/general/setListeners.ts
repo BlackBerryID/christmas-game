@@ -5,6 +5,7 @@ import { Buttons } from '../toysPage/filters/buttons';
 import { Search } from '../header/search';
 import { LocalStorage } from '../localStorage/storage';
 import Start from '../startPage/start';
+import { Navigation } from '../header/nav';
 
 const sort = new Sort();
 sort.addListener();
@@ -26,3 +27,6 @@ storage.addListener();
 
 const start = new Start();
 start.addListener();
+
+const nav = new Navigation();
+nav.addListener();
