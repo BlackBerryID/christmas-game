@@ -7,6 +7,7 @@ interface IStorage {
   sizes?: Set<string> | string[];
   isFavorite?: boolean;
   selected?: Set<string> | string[];
+  treeNum?: string;
 }
 
 interface ILocalStorage {

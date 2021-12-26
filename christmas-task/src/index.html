@@ -119,17 +119,17 @@
             <div class="choose-tree">
               <div class="choose-tree_title title">Выбери ёлку</div>
               <ul class="choose-tree_cards">
-                <li class="choose-tree_card">
-                  <img src="./assets/tree/1.png" alt="christmas tree" class="choose-tree_img" />
+                <li class="choose-tree_card" data-tree-num="1">
+                  <img src="../public/tree/1.png" alt="christmas tree" class="choose-tree_img" />
                 </li>
-                <li class="choose-tree_card">
-                  <img src="./assets/tree/2.png" alt="christmas tree" class="choose-tree_img" />
+                <li class="choose-tree_card" data-tree-num="2">
+                  <img src="../public/tree/2.png" alt="christmas tree" class="choose-tree_img" />
                 </li>
-                <li class="choose-tree_card">
-                  <img src="./assets/tree/3.png" alt="christmas tree" class="choose-tree_img" />
+                <li class="choose-tree_card" data-tree-num="3">
+                  <img src="../public/tree/3.png" alt="christmas tree" class="choose-tree_img" />
                 </li>
-                <li class="choose-tree_card">
-                  <img src="./assets/tree/5.png" alt="christmas tree" class="choose-tree_img" />
+                <li class="choose-tree_card" data-tree-num="4">
+                  <img src="../public/tree/4.png" alt="christmas tree" class="choose-tree_img" />
                 </li>
               </ul>
             </div>
@@ -169,10 +169,8 @@
         </div>
         <!-- settings column -->
         <div class="tree-column">
-          <div class="tree-column_wrapper">
-            <div class="snowflakes"></div>
-            <img src="./assets/tree/1.png" alt="christmas tree" class="tree-column_img" />
-          </div>
+          <div class="snowflakes"></div>
+          <div class="tree-column_wrapper"></div>
         </div>
         <!-- tree column -->
         <div class="selected-column">
@@ -180,9 +178,16 @@
             <div class="selected-toys_wrapper">
               <div class="selected-toys_title title">Игрушки</div>
               <ul class="selected-toys_list">
-                <li class="selected-toys_item">
+                <li class="selected-toys_item" data-num="1">
                   <p class="selected-toys_item__number">12</p>
-                  <img src="../public/toys/10.png" alt="toys" class="selected-toys_item__img" />
+                  <img
+                    src="../public/toys/11.png"
+                    alt="toy"
+                    class="selected-toys_item__img"
+                    draggable="true"
+                    id="1-1"
+                    data-imgnum="1"
+                  />
                 </li>
                 <li class="selected-toys_item">
                   <p class="selected-toys_item__number">12</p>
