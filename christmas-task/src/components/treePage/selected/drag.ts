@@ -50,20 +50,27 @@ class Drag implements IDrag {
     this.treeWrapper.append(toy as HTMLElement);
   }
 
-  dragEnd(e: DragEvent) {
-    if (e.dataTransfer?.dropEffect === 'copy') return;
+  dragEnd(e: DragEvent): void {
     const selectedToysList = this.selectedToysList.querySelectorAll('.selected-toys_item');
     const draggableImg: HTMLElement = e.target as HTMLElement;
-    selectedToysList.forEach((item) => {
-      if ((item as HTMLElement).dataset.num === draggableImg.dataset.imgnum) {
-        draggableImg.remove();
-        draggableImg.style.left = '0px';
-        draggableImg.style.top = '0px';
-        item.append(draggableImg);
-      }
-    });
-    console.log(selectedToysList);
-    console.log(e.target);
+    const selectedToyCard: HTMLElement = Array.from(selectedToysList).find(
+      (item) => (item as HTMLElement).dataset.num === draggableImg.dataset.imgnum
+    ) as HTMLElement;
+    if (e.dataTransfer?.dropEffect === 'none') {
+      draggableImg.remove();
+      draggableImg.style.left = '0px';
+      draggableImg.style.top = '0px';
+      selectedToyCard.append(draggableImg);
+    }
+    this.checkToyCount(draggableImg, selectedToyCard);
+  }
+
+  private checkToyCount(img: HTMLElement, selectedToyCard: HTMLElement): void {
+    const imagesInCard = selectedToyCard.querySelectorAll('.selected-toys_item__img');
+    const count: HTMLParagraphElement = selectedToyCard.querySelector(
+      '.selected-toys_item__number'
+    ) as HTMLParagraphElement;
+    count.textContent = String(imagesInCard.length);
   }
 }
 
