@@ -3,7 +3,7 @@ interface IDrag {
   setTreeMap(): void;
 }
 
-class Drag {
+class Drag implements IDrag {
   private toysList: HTMLElement;
   private treeMap: HTMLElement;
   private treeWrapper: HTMLElement;
