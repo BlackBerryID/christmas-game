@@ -43,7 +43,7 @@ export default class Tree {
     img.alt = 'christmas tree';
     img.setAttribute('usemap', '#image-map');
     img.onload = () => {
-      this.treeWrapper.querySelector('.choose-tree_img')?.remove();
+      this.treeWrapper.querySelector('.tree-column_img')?.remove();
       this.treeWrapper.append(img);
       this.treeWrapper.innerHTML += `<map class="map" name="image-map">
       <area coords="${img.offsetWidth / 2},0,

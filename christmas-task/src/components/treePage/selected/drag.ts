@@ -16,6 +16,7 @@ class Drag {
 
   addListener(): void {
     this.toysList.addEventListener('dragstart', this.dragStart);
+    window.addEventListener('dragend', (e) => this.dragEnd(e));
   }
 
   setTreeMap(): void {
@@ -43,8 +44,12 @@ class Drag {
     toy?.remove();
     toy!.style.left = eventLeft - treeWrapperLeft - toyWidth / 2 + 'px';
     toy!.style.top = eventTop - treeWrapperTop - toyHeight / 2 + 'px';
+    toy!.addEventListener('dragstart', this.dragStart);
     this.treeWrapper.append(toy as HTMLElement);
-    console.log(e);
+  }
+
+  dragEnd(e: DragEvent) {
+    console.log(e.dataTransfer?.dropEffect);
   }
 }
 

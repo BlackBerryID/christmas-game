@@ -31,7 +31,6 @@ class Navigation implements INavigation {
 
   private highlightNavLink(pageName: string): void {
     this.navLinks.forEach((item) => {
-      console.log(item);
       item.classList.remove('active');
       if (item.dataset.page === pageName && item.dataset.page !== 'start') item.classList.add('active');
     });
