@@ -48,6 +48,10 @@ class Selected {
       );
       this.selectedToysList.innerHTML = '';
       selectedToysCards.forEach((item) => this.selectedToysList.append(this.createSelectedToyCard(item)));
+    } else {
+      cardsArray.length = 20;
+      this.selectedToysList.innerHTML = '';
+      cardsArray.forEach((item) => this.selectedToysList.append(this.createSelectedToyCard(item)));
     }
   }
 }

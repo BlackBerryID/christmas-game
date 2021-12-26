@@ -1,6 +1,5 @@
-import { Select } from '../toysPage/cards/selectCards';
 import { Selected, ISelected } from '../treePage/selected/selected';
-import { ISearch } from './search';
+import { Tree, ITree } from '../treePage/tree/tree';
 
 interface INavigation {
   addListener(): void;
@@ -15,6 +14,7 @@ class Navigation implements INavigation {
   private navBar: HTMLElement;
   private navLinks: HTMLElement[];
   private selected: ISelected;
+  private tree: ITree;
 
   constructor() {
     this.startPage = document.querySelector('.start-page') as HTMLElement;
@@ -23,6 +23,7 @@ class Navigation implements INavigation {
     this.navBar = document.querySelector('.nav') as HTMLElement;
     this.navLinks = Array.from(document.querySelectorAll('.nav_link')) as HTMLElement[];
     this.selected = new Selected();
+    this.tree = new Tree();
   }
 
   addListener() {
@@ -32,7 +33,10 @@ class Navigation implements INavigation {
   navClicksHandler(e: Event): void {
     if (!(e.target as HTMLElement).classList.contains('nav_link')) return;
     const pageName = (e.target as HTMLElement).dataset.page!;
-    if (pageName === 'tree') this.selected.renderSelectedToys();
+    if (pageName === 'tree') {
+      this.selected.renderSelectedToys();
+      this.tree.clearTree();
+    }
     this.openPage(pageName);
   }
 

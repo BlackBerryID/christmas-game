@@ -1,7 +1,13 @@
 import { LocalStorage, ILocalStorage } from '../../localStorage/storage';
 import { Drag, IDrag } from '../selected/drag';
 
-export default class Tree {
+interface ITree {
+  addListener(): void;
+  renderTree(): void;
+  clearTree(): void;
+}
+
+class Tree implements ITree {
   private treeWrapper: HTMLElement;
   private chooseTreeWrapper: HTMLElement;
   private storage: ILocalStorage;
@@ -14,16 +20,21 @@ export default class Tree {
     this.drag = new Drag();
   }
 
-  addListener() {
+  addListener(): void {
     this.chooseTreeWrapper.addEventListener('click', (e) => this.treeCardsClicksHandler(e));
   }
 
-  renderTree() {
+  renderTree(): void {
     const treeNum = JSON.parse(localStorage.getItem('storage')!).treeNum || '1';
     this.changeTree(treeNum);
   }
 
-  treeCardsClicksHandler(e: Event): void {
+  clearTree(): void {
+    const imagesOnTree = this.treeWrapper.querySelectorAll('.selected-toys_item__img');
+    imagesOnTree.forEach((item) => item.remove());
+  }
+
+  private treeCardsClicksHandler(e: Event): void {
     const card = (e.target as HTMLElement).classList.contains('choose-tree_card')
       ? e.target
       : ((e.target as HTMLElement).parentNode as HTMLElement).classList.contains('choose-tree_card')
@@ -36,7 +47,7 @@ export default class Tree {
     this.changeTree(treeNum);
   }
 
-  changeTree(num: string): void {
+  private changeTree(num: string): void {
     const img = new Image();
     img.src = `../public/tree/${num}.png`;
     img.classList.add('tree-column_img');
@@ -55,3 +66,5 @@ export default class Tree {
     };
   }
 }
+
+export { Tree, ITree };

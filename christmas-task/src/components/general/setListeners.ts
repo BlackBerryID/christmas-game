@@ -7,7 +7,7 @@ import { LocalStorage } from '../localStorage/storage';
 import Start from '../startPage/start';
 import { Navigation } from '../header/nav';
 import { Drag } from '../treePage/selected/drag';
-import Tree from '../treePage/tree/tree';
+import { Tree } from '../treePage/tree/tree';
 
 const sort = new Sort();
 sort.addListener();
