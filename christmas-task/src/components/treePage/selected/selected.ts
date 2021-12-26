@@ -49,7 +49,6 @@ class Selected {
       this.selectedToysList.innerHTML = '';
       selectedToysCards.forEach((item) => this.selectedToysList.append(this.createSelectedToyCard(item)));
     }
-    console.log(toysList);
   }
 }
 

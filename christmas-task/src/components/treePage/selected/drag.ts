@@ -7,11 +7,13 @@ class Drag implements IDrag {
   private toysList: HTMLElement;
   private treeMap: HTMLElement;
   private treeWrapper: HTMLElement;
+  private selectedToysList: HTMLElement;
 
   constructor() {
     this.toysList = document.querySelector('.selected-toys_list') as HTMLElement;
     this.treeMap = document.querySelector('.map') as HTMLElement;
     this.treeWrapper = document.querySelector('.tree-column_wrapper') as HTMLElement;
+    this.selectedToysList = document.querySelector('.selected-toys_list') as HTMLElement;
   }
 
   addListener(): void {
@@ -49,7 +51,19 @@ class Drag implements IDrag {
   }
 
   dragEnd(e: DragEvent) {
-    console.log(e.dataTransfer?.dropEffect);
+    if (e.dataTransfer?.dropEffect === 'copy') return;
+    const selectedToysList = this.selectedToysList.querySelectorAll('.selected-toys_item');
+    const draggableImg: HTMLElement = e.target as HTMLElement;
+    selectedToysList.forEach((item) => {
+      if ((item as HTMLElement).dataset.num === draggableImg.dataset.imgnum) {
+        draggableImg.remove();
+        draggableImg.style.left = '0px';
+        draggableImg.style.top = '0px';
+        item.append(draggableImg);
+      }
+    });
+    console.log(selectedToysList);
+    console.log(e.target);
   }
 }
 
