@@ -13,6 +13,7 @@ $rotationDegree: 20deg;
   width: 100%;
   height: 100%;
   z-index: 20;
+  pointer-events: none;
 
   &.blue li {
     background: rgba(97, 97, 255, 1);
@@ -108,6 +109,7 @@ $rotationDegree: 20deg;
     border-radius: 50%;
     margin: $globe-spacing/2;
     display: inline-block;
+    pointer-events: none;
 
     &:before {
       content: '';

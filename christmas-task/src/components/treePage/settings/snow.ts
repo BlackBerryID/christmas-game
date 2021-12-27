@@ -9,6 +9,7 @@ class Snow {
   private snowContainer: HTMLElement;
   private snowBtn: HTMLButtonElement;
   private resetSettingsButton: HTMLButtonElement;
+  private treePageBtn: HTMLButtonElement;
   private storage: ILocalStorage;
   private interval?: number;
 
@@ -16,6 +17,7 @@ class Snow {
     this.snowContainer = document.querySelector('.snowflakes') as HTMLElement;
     this.snowBtn = document.querySelector('.snow-btn') as HTMLButtonElement;
     this.resetSettingsButton = document.querySelector('.settings-column_btn') as HTMLButtonElement;
+    this.treePageBtn = document.querySelector('.christmas-tree') as HTMLButtonElement;
     this.interval;
     this.storage = new LocalStorage();
   }
@@ -23,7 +25,7 @@ class Snow {
   addListener(): void {
     this.snowBtn.addEventListener('click', () => this.toggleSnow());
     this.resetSettingsButton.addEventListener('click', () => this.removeSnow());
-    window.addEventListener('DOMContentLoaded', () => this.checkSnow(this.storage.storage.isSnowActive));
+    this.treePageBtn.addEventListener('click', () => this.checkSnow(this.storage.storage.isSnowActive));
   }
 
   private removeSnow() {
