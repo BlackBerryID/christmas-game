@@ -15,6 +15,13 @@ class Snow {
 
   addListener(): void {
     this.snowBtn.addEventListener('click', () => this.toggleSnow());
+    window.addEventListener('DOMContentLoaded', () => this.checkSnow(this.storage.storage.isSnowActive));
+  }
+
+  private checkSnow(isSnowActive?: boolean): void {
+    if (isSnowActive) {
+      this.toggleSnow();
+    }
   }
 
   toggleSnow() {

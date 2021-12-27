@@ -29,7 +29,7 @@ class Settings {
     window.addEventListener('DOMContentLoaded', () => this.checkMusic(this.storage.storage.isPlay));
   }
 
-  checkMusic(isPlay?: boolean): void {
+  private checkMusic(isPlay?: boolean): void {
     if (isPlay) {
       window.addEventListener('click', this.playMusicOnce);
     }
