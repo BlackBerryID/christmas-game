@@ -37,8 +37,6 @@ class Snow {
 
   private checkSnow(isSnowActive?: boolean): void {
     if (isSnowActive) {
-      // double toggle is necessary to prevent falling all snowflakes in the same place
-      this.toggleSnow();
       this.toggleSnow();
     }
   }
