@@ -1,3 +1,5 @@
+import { LocalStorage, ILocalStorage } from '../../localStorage/storage';
+
 type IPixelRatioData = {
   [property: string]: number;
 };
@@ -11,38 +13,58 @@ const pixelRatioData: IPixelRatioData = {
 
 class Garland {
   private treeWrapper: HTMLElement;
-  private testBTN: HTMLElement;
   private garlandContainer: HTMLElement;
   private garlandButtonsWrapper: HTMLElement;
+  private garlandToggleBtn: HTMLInputElement;
+  private storage: ILocalStorage;
 
   constructor() {
     this.treeWrapper = document.querySelector('.tree-column_wrapper') as HTMLElement;
-    this.testBTN = document.querySelector('.blue-btn') as HTMLElement;
     this.garlandContainer = document.querySelector('.garland_container') as HTMLElement;
     this.garlandButtonsWrapper = document.querySelector('.garland_buttons-wrapper') as HTMLElement;
+    this.garlandToggleBtn = document.querySelector('.checkbox') as HTMLInputElement;
+    this.storage = new LocalStorage();
   }
 
   addListener() {
     this.garlandButtonsWrapper.addEventListener('click', (e) => this.garlandButtonsClicksHandler(e));
+    this.garlandToggleBtn.addEventListener('change', () => this.toggleGarland());
   }
 
-  garlandButtonsClicksHandler(e: Event) {
+  private garlandButtonsClicksHandler(e: Event) {
     if (!(e.target as HTMLElement).classList.contains('garland_btn')) return;
     const color = (e.target as HTMLElement).dataset.color;
+    if (!this.garlandToggleBtn.checked) this.garlandToggleBtn.checked = true;
     this.renderGarland(color!);
   }
 
-  renderGarland(color: string): void {
-    this.garlandContainer.className = `garland_container ${color}`;
+  private toggleGarland() {
+    if (!this.garlandToggleBtn.checked) {
+      this.garlandContainer.className = `garland_container`;
+      this.removeGarland();
+    } else {
+      const garlandColor = this.storage.storage.garlandColor || 'multicolor';
+      this.renderGarland(garlandColor);
+    }
+    console.log(this.garlandToggleBtn.checked);
+  }
+
+  private removeGarland(): void {
     const previousGarlandRopes = this.garlandContainer.querySelectorAll('ul');
     previousGarlandRopes.forEach((item) => item.remove());
+  }
+
+  private renderGarland(color: string): void {
+    this.storage.storage.garlandColor = color;
+    this.garlandContainer.className = `garland_container ${color}`;
+    this.removeGarland();
     this.garlandContainer.append(this.createRope('one'));
     this.garlandContainer.append(this.createRope('two'));
     this.garlandContainer.append(this.createRope('three'));
     this.garlandContainer.append(this.createRope('four'));
   }
 
-  createRope(lightrope: string): HTMLUListElement {
+  private createRope(lightrope: string): HTMLUListElement {
     let treeContainerWidth = this.treeWrapper.offsetWidth;
     const pixelsPerOneLight = pixelRatioData[lightrope];
     const rope = document.createElement('ul');

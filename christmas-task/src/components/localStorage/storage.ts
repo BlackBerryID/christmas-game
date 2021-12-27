@@ -11,6 +11,7 @@ interface IStorage {
   bgNum?: string;
   isPlay?: boolean;
   isSnowActive?: boolean;
+  garlandColor?: string;
 }
 
 interface ILocalStorage {
