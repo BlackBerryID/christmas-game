@@ -11,6 +11,7 @@ class Settings {
   private chooseBackground: HTMLElement;
   private treeColumn: HTMLElement;
   private soundBtn: HTMLButtonElement;
+  private treePageBtn: HTMLButtonElement;
   private resetSettingsButton: HTMLButtonElement;
   private tree: ITree;
   private storage: ILocalStorage;
@@ -22,6 +23,7 @@ class Settings {
     this.treeColumn = document.querySelector('.tree-column') as HTMLElement;
     this.soundBtn = document.querySelector('.sound-btn') as HTMLButtonElement;
     this.resetSettingsButton = document.querySelector('.settings-column_btn') as HTMLButtonElement;
+    this.treePageBtn = document.querySelector('.christmas-tree') as HTMLButtonElement;
     this.tree = new Tree();
     this.storage = new LocalStorage();
     this.buttons = new Buttons();
@@ -33,6 +35,7 @@ class Settings {
     this.soundBtn.addEventListener('click', () => this.toggleMusic());
     this.resetSettingsButton.addEventListener('click', () => this.buttons.resetSettings());
     window.addEventListener('DOMContentLoaded', () => this.checkMusic(this.storage.storage.isPlay));
+    this.treePageBtn.addEventListener('click', () => this.renderBackground());
   }
 
   private checkMusic(isPlay?: boolean): void {

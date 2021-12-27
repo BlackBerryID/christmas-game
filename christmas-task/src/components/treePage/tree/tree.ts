@@ -5,19 +5,24 @@ interface ITree {
   renderTree(): void;
   clearTree(): void;
   treeCardsClicksHandler(e: Event): void;
+  addListener(): void;
 }
 
 class Tree implements ITree {
   private treeWrapper: HTMLElement;
-  private chooseTreeWrapper: HTMLElement;
+  private treePageBtn: HTMLElement;
   private storage: ILocalStorage;
   private drag: IDrag;
 
   constructor() {
     this.treeWrapper = document.querySelector('.tree-column_wrapper') as HTMLElement;
-    this.chooseTreeWrapper = document.querySelector('.choose-tree_cards') as HTMLElement;
+    this.treePageBtn = document.querySelector('.christmas-tree') as HTMLButtonElement;
     this.storage = new LocalStorage();
     this.drag = new Drag();
+  }
+
+  addListener(): void {
+    this.treePageBtn.addEventListener('click', () => this.renderTree());
   }
 
   renderTree(): void {
@@ -57,13 +62,15 @@ class Tree implements ITree {
     img.onload = () => {
       this.treeWrapper.querySelector('.tree-column_img')?.remove();
       this.treeWrapper.append(img);
-      this.treeWrapper.innerHTML += `<map class="map" name="image-map">
+      setTimeout(() => {
+        this.treeWrapper.innerHTML += `<map class="map" name="image-map">
       <area coords="${img.offsetWidth / 2},0,
                     ${img.offsetWidth},${(img.offsetHeight / 5) * 4},
                     ${img.offsetWidth / 2},${img.offsetHeight},
                     0,${(img.offsetHeight / 5) * 4}" shape="poly" href="#"/>
       </map>`;
-      this.drag.setTreeMap();
+        this.drag.setTreeMap();
+      }, 300);
     };
   }
 }
