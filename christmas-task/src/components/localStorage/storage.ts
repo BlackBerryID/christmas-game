@@ -10,6 +10,7 @@ interface IStorage {
   treeNum?: string;
   bgNum?: string;
   isPlay?: boolean;
+  isSnowActive?: boolean;
 }
 
 interface ILocalStorage {

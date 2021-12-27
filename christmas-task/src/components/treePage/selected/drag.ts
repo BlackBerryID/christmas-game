@@ -8,12 +8,14 @@ class Drag implements IDrag {
   private treeMap: HTMLElement;
   private treeWrapper: HTMLElement;
   private selectedToysList: HTMLElement;
+  private treeColumn: HTMLElement;
 
   constructor() {
     this.toysList = document.querySelector('.selected-toys_list') as HTMLElement;
     this.treeMap = document.querySelector('.map') as HTMLElement;
     this.treeWrapper = document.querySelector('.tree-column_wrapper') as HTMLElement;
     this.selectedToysList = document.querySelector('.selected-toys_list') as HTMLElement;
+    this.treeColumn = document.querySelector('.tree-column') as HTMLElement;
   }
 
   addListener(): void {
@@ -39,13 +41,15 @@ class Drag implements IDrag {
     const toy = document.getElementById(toyId);
     const toyWidth = toy!.offsetWidth;
     const toyHeight = toy!.offsetHeight;
+    const treeColumnLeft = this.treeColumn.offsetLeft;
+    const treeColumnTop = this.treeColumn.offsetTop;
     const treeWrapperLeft = this.treeWrapper.offsetLeft;
     const treeWrapperTop = this.treeWrapper.offsetTop;
     const eventLeft = e.clientX;
     const eventTop = e.clientY;
     toy?.remove();
-    toy!.style.left = eventLeft - treeWrapperLeft - toyWidth / 2 + 'px';
-    toy!.style.top = eventTop - treeWrapperTop - toyHeight / 2 + 'px';
+    toy!.style.left = eventLeft - treeColumnLeft - treeWrapperLeft - toyWidth / 2 + 'px';
+    toy!.style.top = eventTop - treeColumnTop - treeWrapperTop - toyHeight / 2 + 'px';
     toy!.addEventListener('dragstart', this.dragStart);
     this.treeWrapper.append(toy as HTMLElement);
   }

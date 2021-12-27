@@ -8,6 +8,7 @@ import Start from '../startPage/start';
 import { Navigation } from '../header/nav';
 import { Drag } from '../treePage/selected/drag';
 import { Settings } from '../treePage/settings/settings';
+import { Snow } from '../treePage/settings/snow';
 
 const sort = new Sort();
 sort.addListener();
@@ -38,3 +39,6 @@ drag.addListener();
 
 const settings = new Settings();
 settings.addListener();
+
+const snow = new Snow();
+snow.addListener();
