@@ -96,31 +96,6 @@
       background-size: cover;
       cursor: pointer;
     }
-
-    &_card__1 {
-      background-image: url('./assets/bg/1.jpg');
-    }
-    &_card__2 {
-      background-image: url('./assets/bg/2.jpg');
-    }
-    &_card__3 {
-      background-image: url('./assets/bg/3.jpg');
-    }
-    &_card__4 {
-      background-image: url('./assets/bg/4.jpg');
-    }
-    &_card__5 {
-      background-image: url('./assets/bg/5.jpg');
-    }
-    &_card__6 {
-      background-image: url('./assets/bg/6.jpg');
-    }
-    &_card__7 {
-      background-image: url('./assets/bg/7.jpg');
-    }
-    &_card__8 {
-      background-image: url('./assets/bg/8.jpg');
-    }
   }
 
   /* Garland */
@@ -236,4 +211,33 @@
 
 .settings-column_btn {
   margin: 40px auto 20px;
+}
+
+/* Background */
+
+.background {
+  &__1 {
+    background-image: url('../public/bg/1.jpg');
+  }
+  &__2 {
+    background-image: url('../public/bg/2.jpg');
+  }
+  &__3 {
+    background-image: url('../public/bg/3.jpg');
+  }
+  &__4 {
+    background-image: url('../public/bg/4.jpg');
+  }
+  &__5 {
+    background-image: url('../public/bg/5.jpg');
+  }
+  &__6 {
+    background-image: url('../public/bg/6.jpg');
+  }
+  &__7 {
+    background-image: url('../public/bg/7.jpg');
+  }
+  &__8 {
+    background-image: url('../public/bg/8.jpg');
+  }
 }
