@@ -13,12 +13,58 @@ $rotationDegree: 20deg;
   width: 100%;
   height: 100%;
   z-index: 20;
+
+  &.blue li {
+    background: rgba(97, 97, 255, 1);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(97, 97, 255, 1);
+    animation-name: flash-blue;
+  }
+
+  &.green li {
+    background: rgba(52, 218, 52, 1);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(52, 218, 52, 1);
+    animation-name: flash-green;
+  }
+
+  &.yellow li {
+    background: rgba(243, 243, 49, 1);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(243, 243, 49, 1);
+    animation-name: flash-yellow;
+  }
+
+  &.red li {
+    background: rgba(233, 35, 35, 1);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(233, 35, 35, 1);
+    animation-name: flash-red;
+  }
+
+  &.multicolor {
+    li:nth-child(4n + 1) {
+      background: rgba(233, 35, 35, 1);
+      box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(233, 35, 35, 1);
+      animation-name: flash-red;
+    }
+    li:nth-child(4n + 2) {
+      background: rgba(243, 243, 49, 1);
+      box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(243, 243, 49, 1);
+      animation-name: flash-yellow;
+    }
+    li:nth-child(4n + 3) {
+      background: rgba(52, 218, 52, 1);
+      box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(52, 218, 52, 1);
+      animation-name: flash-green;
+    }
+    li:nth-child(4n) {
+      background: rgba(97, 97, 255, 1);
+      box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(97, 97, 255, 1);
+      animation-name: flash-blue;
+    }
+  }
 }
 
 .lightrope {
   display: flex;
   justify-content: center;
-  // text-align: center;
   white-space: nowrap;
   overflow: hidden;
   position: absolute;
@@ -62,28 +108,7 @@ $rotationDegree: 20deg;
     border-radius: 50%;
     margin: $globe-spacing/2;
     display: inline-block;
-    background: rgba(0, 247, 165, 1);
-    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(0, 247, 165, 1);
-    animation-name: flash-1;
-    animation-duration: 2s;
-    &:nth-child(2n + 1) {
-      background: rgba(0, 255, 255, 1);
-      box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(0, 255, 255, 0.5);
-      animation-name: flash-2;
-      animation-duration: 0.4s;
-    }
-    &:nth-child(4n + 2) {
-      background: rgba(247, 0, 148, 1);
-      box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(247, 0, 148, 1);
-      animation-name: flash-3;
-      animation-duration: 1.1s;
-    }
-    &:nth-child(odd) {
-      animation-duration: 1.8s;
-    }
-    &:nth-child(3n + 1) {
-      animation-duration: 1.4s;
-    }
+
     &:before {
       content: '';
       position: absolute;
@@ -94,6 +119,7 @@ $rotationDegree: 20deg;
       top: (0 - ($globe-height/6));
       left: 1px;
     }
+
     &:after {
       content: '';
       top: (0 - $globe-height/2);
@@ -114,36 +140,47 @@ $rotationDegree: 20deg;
   }
 }
 
-@keyframes flash-1 {
+@keyframes flash-blue {
   0%,
   100% {
-    background: rgba(0, 247, 165, 1);
-    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(0, 247, 165, 1);
+    background: rgba(97, 97, 255, 1);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(97, 97, 255, 1);
   }
   50% {
-    background: rgba(0, 247, 165, $light-off-opacity);
-    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(0, 247, 165, 0.2);
+    background: rgba(67, 67, 212, $light-off-opacity);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(97, 97, 255, 0.2);
   }
 }
-@keyframes flash-2 {
+@keyframes flash-green {
   0%,
   100% {
-    background: rgba(0, 255, 255, 1);
-    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(0, 255, 255, 1);
+    background: rgba(52, 218, 52, 1);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(52, 218, 52, 1);
   }
   50% {
-    background: rgba(0, 255, 255, $light-off-opacity);
-    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(0, 255, 255, 0.2);
+    background: rgba(52, 218, 52, $light-off-opacity);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(52, 218, 52, 0.2);
   }
 }
-@keyframes flash-3 {
+@keyframes flash-yellow {
   0%,
   100% {
-    background: rgba(247, 0, 148, 1);
-    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(247, 0, 148, 1);
+    background: rgba(243, 243, 49, 1);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(243, 243, 49, 1);
   }
   50% {
-    background: rgba(247, 0, 148, $light-off-opacity);
-    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(247, 0, 148, 0.2);
+    background: rgba(243, 243, 49, $light-off-opacity);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(243, 243, 49, 0.2);
+  }
+}
+@keyframes flash-red {
+  0%,
+  100% {
+    background: rgba(233, 35, 35, 1);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(233, 35, 35, 1);
+  }
+  50% {
+    background: rgba(233, 35, 35, $light-off-opacity);
+    box-shadow: 0px $globe-height/6 $globe-width * 2 $globe-spread rgba(233, 35, 35, 0.2);
   }
 }
