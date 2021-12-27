@@ -11,6 +11,11 @@ const pixelRatioData: IPixelRatioData = {
   four: 55,
 };
 
+interface IGarland {
+  addListener(): void;
+  toggleGarland(): void;
+}
+
 class Garland {
   private treeWrapper: HTMLElement;
   private garlandContainer: HTMLElement;
@@ -26,7 +31,7 @@ class Garland {
     this.storage = new LocalStorage();
   }
 
-  addListener() {
+  addListener(): void {
     this.garlandButtonsWrapper.addEventListener('click', (e) => this.garlandButtonsClicksHandler(e));
     this.garlandToggleBtn.addEventListener('change', () => this.toggleGarland());
   }
@@ -38,7 +43,7 @@ class Garland {
     this.renderGarland(color!);
   }
 
-  private toggleGarland() {
+  toggleGarland(): void {
     if (!this.garlandToggleBtn.checked) {
       this.garlandContainer.className = `garland_container`;
       this.removeGarland();
@@ -46,7 +51,6 @@ class Garland {
       const garlandColor = this.storage.storage.garlandColor || 'multicolor';
       this.renderGarland(garlandColor);
     }
-    console.log(this.garlandToggleBtn.checked);
   }
 
   private removeGarland(): void {
@@ -79,4 +83,4 @@ class Garland {
   }
 }
 
-export { Garland };
+export { Garland, IGarland };

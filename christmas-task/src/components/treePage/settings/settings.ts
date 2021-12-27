@@ -13,6 +13,7 @@ class Settings {
   private soundBtn: HTMLButtonElement;
   private treePageBtn: HTMLButtonElement;
   private resetSettingsButton: HTMLButtonElement;
+  public garlandToggleBtn: HTMLInputElement;
   private tree: ITree;
   private storage: ILocalStorage;
   private buttons: IButtons;
@@ -24,6 +25,7 @@ class Settings {
     this.soundBtn = document.querySelector('.sound-btn') as HTMLButtonElement;
     this.resetSettingsButton = document.querySelector('.settings-column_btn') as HTMLButtonElement;
     this.treePageBtn = document.querySelector('.christmas-tree') as HTMLButtonElement;
+    this.garlandToggleBtn = document.querySelector('.checkbox') as HTMLInputElement;
     this.tree = new Tree();
     this.storage = new LocalStorage();
     this.buttons = new Buttons();

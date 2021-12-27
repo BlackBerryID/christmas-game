@@ -5,7 +5,7 @@ import { Filters } from './filters';
 import { Selected, ISelected } from '../../treePage/selected/selected';
 import { Tree, ITree } from '../../treePage/tree/tree';
 import { Settings } from '../../treePage/settings/settings';
-import { Snow, ISnow } from '../../treePage/settings/snow';
+import { Garland, IGarland } from '../../treePage/garland/garland';
 
 interface IButtons {
   addListener(): void;
@@ -23,7 +23,7 @@ class Buttons implements IButtons {
   private storage: ILocalStorage;
   private selected: ISelected;
   private tree: ITree;
-  private snow: ISnow;
+  private garland: IGarland;
 
   constructor() {
     this.resetFiltersButton = document.querySelector('.filters') as HTMLElement;
@@ -36,7 +36,7 @@ class Buttons implements IButtons {
     this.storage = new LocalStorage();
     this.selected = new Selected();
     this.tree = new Tree();
-    this.snow = new Snow();
+    this.garland = new Garland();
   }
 
   addListener(): void {
@@ -60,7 +60,6 @@ class Buttons implements IButtons {
   resetSettings(): void {
     const settings = new Settings();
     if (this.storage.storage.isPlay) settings.toggleMusic();
-    // if (this.storage.storage.isSnowActive) this.snow.toggleSnow();
     this.storage.storage = {};
     localStorage.clear();
     (this.select as HTMLSelectElement).selectedIndex = 0;
@@ -72,6 +71,8 @@ class Buttons implements IButtons {
     this.tree.clearTree();
     this.tree.renderTree();
     settings.renderBackground();
+    settings.garlandToggleBtn.checked = false;
+    this.garland.toggleGarland();
   }
 }
 
