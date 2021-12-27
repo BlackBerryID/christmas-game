@@ -9,6 +9,7 @@ import { Navigation } from '../header/nav';
 import { Drag } from '../treePage/selected/drag';
 import { Settings } from '../treePage/settings/settings';
 import { Snow } from '../treePage/settings/snow';
+import { Garland } from '../treePage/garland/garland';
 
 const sort = new Sort();
 sort.addListener();
@@ -42,3 +43,6 @@ settings.addListener();
 
 const snow = new Snow();
 snow.addListener();
+
+const garland = new Garland();
+garland.addListener();

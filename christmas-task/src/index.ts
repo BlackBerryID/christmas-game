@@ -5,6 +5,7 @@ import { Cards } from './components/toysPage/cards/renderCards';
 import { Tree } from './components/treePage/tree/tree';
 import { Settings } from './components/treePage/settings/settings';
 import './components/general/console';
+import './components/treePage/garland/garland';
 
 const cards = new Cards();
 cards.renderCards();
