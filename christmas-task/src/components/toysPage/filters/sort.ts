@@ -27,7 +27,7 @@ class Sort implements ISort {
 
   sortCards(array: IData[]): IData[] {
     const method = this.storage.storage.sortMethod || '0';
-    let result =
+    const result =
       method === '0'
         ? array.sort((a, b) => (a.name > b.name ? 1 : -1))
         : method === '1'

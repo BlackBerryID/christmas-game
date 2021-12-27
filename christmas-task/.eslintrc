@@ -18,6 +18,7 @@
     "@typescript-eslint/comma-dangle": "off",
     "@typescript-eslint/lines-between-class-members": "off",
     "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/ban-types": "warn",
     "max-len": [
       "warn",
       {

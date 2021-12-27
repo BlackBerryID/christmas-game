@@ -9,6 +9,7 @@ interface IStorage {
   selected?: Set<string> | string[];
   treeNum?: string;
   bgNum?: string;
+  isPlay?: boolean;
 }
 
 interface ILocalStorage {

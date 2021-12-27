@@ -34,7 +34,18 @@
       height: 40px;
       border: none;
       background-size: 100%;
+      transition: 0.1s;
       cursor: pointer;
+    }
+
+    .sound-btn:hover,
+    .snow-btn:hover {
+      filter: invert(10%) sepia(0%) saturate(0%) hue-rotate(64deg) brightness(97%) contrast(97%);
+    }
+
+    .sound-btn.active,
+    .snow-btn.active {
+      filter: invert(66%) sepia(12%) saturate(1866%) hue-rotate(126deg) brightness(184%) contrast(90%);
     }
   }
 
