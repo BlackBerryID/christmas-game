@@ -45,7 +45,7 @@ class Garland {
 
   toggleGarland(): void {
     if (!this.garlandToggleBtn.checked) {
-      this.garlandContainer.className = `garland_container`;
+      this.garlandContainer.className = 'garland_container';
       this.removeGarland();
     } else {
       const garlandColor = this.storage.storage.garlandColor || 'multicolor';

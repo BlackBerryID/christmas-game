@@ -40,8 +40,8 @@ class Settings {
     this.treePageBtn.addEventListener('click', () => this.renderBackground());
   }
 
-  private checkMusic(isPlay?: boolean): void {
-    if (isPlay) {
+  private checkMusic(isMusicPlay?: boolean): void {
+    if (isMusicPlay) {
       window.addEventListener('click', this.playMusicOnce);
     }
   }
