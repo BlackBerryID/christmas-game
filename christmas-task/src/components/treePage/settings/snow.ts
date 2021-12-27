@@ -37,6 +37,8 @@ class Snow {
 
   private checkSnow(isSnowActive?: boolean): void {
     if (isSnowActive) {
+      // double toggle is necessary to prevent falling all snowflakes in the same place
+      this.toggleSnow();
       this.toggleSnow();
     }
   }
@@ -56,7 +58,6 @@ class Snow {
   }
 
   private createSnowFlake(): void {
-    console.log(this.snowContainer.style.width);
     const snowFlake = document.createElement('div');
     snowFlake.classList.add('snowflake');
     snowFlake.style.left = Math.random() * this.snowContainer.offsetWidth + 'px';
