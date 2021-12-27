@@ -7,7 +7,7 @@ import { LocalStorage } from '../localStorage/storage';
 import Start from '../startPage/start';
 import { Navigation } from '../header/nav';
 import { Drag } from '../treePage/selected/drag';
-import { Tree } from '../treePage/tree/tree';
+import { Settings } from '../treePage/settings/settings';
 
 const sort = new Sort();
 sort.addListener();
@@ -36,5 +36,5 @@ nav.addListener();
 const drag = new Drag();
 drag.addListener();
 
-const tree = new Tree();
-tree.addListener();
+const settings = new Settings();
+settings.addListener();

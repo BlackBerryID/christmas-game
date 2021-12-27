@@ -2,9 +2,9 @@ import { LocalStorage, ILocalStorage } from '../../localStorage/storage';
 import { Drag, IDrag } from '../selected/drag';
 
 interface ITree {
-  addListener(): void;
   renderTree(): void;
   clearTree(): void;
+  treeCardsClicksHandler(e: Event): void;
 }
 
 class Tree implements ITree {
@@ -20,10 +20,6 @@ class Tree implements ITree {
     this.drag = new Drag();
   }
 
-  addListener(): void {
-    this.chooseTreeWrapper.addEventListener('click', (e) => this.treeCardsClicksHandler(e));
-  }
-
   renderTree(): void {
     const treeNum = JSON.parse(localStorage.getItem('storage')!).treeNum || '1';
     this.changeTree(treeNum);
@@ -34,7 +30,7 @@ class Tree implements ITree {
     imagesOnTree.forEach((item) => item.remove());
   }
 
-  private treeCardsClicksHandler(e: Event): void {
+  treeCardsClicksHandler(e: Event): void {
     const card = (e.target as HTMLElement).classList.contains('choose-tree_card')
       ? e.target
       : ((e.target as HTMLElement).parentNode as HTMLElement).classList.contains('choose-tree_card')
