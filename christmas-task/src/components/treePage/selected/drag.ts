@@ -51,6 +51,7 @@ class Drag implements IDrag {
   }
 
   dragEnd(e: DragEvent): void {
+    if (!(e.target as HTMLElement).classList.contains('selected-toys_item__img')) return;
     const selectedToysList = this.selectedToysList.querySelectorAll('.selected-toys_item');
     const draggableImg: HTMLElement = e.target as HTMLElement;
     const selectedToyCard: HTMLElement = Array.from(selectedToysList).find(
