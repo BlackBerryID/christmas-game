@@ -21,7 +21,12 @@ class Tree implements ITree {
   }
 
   renderTree(): void {
-    const treeNum = JSON.parse(localStorage.getItem('storage')!).treeNum || '1';
+    let treeNum;
+    if (localStorage.getItem('storage')) {
+      treeNum = JSON.parse(localStorage.getItem('storage')!).treeNum || '1';
+    } else {
+      treeNum = '1';
+    }
     this.changeTree(treeNum);
   }
 

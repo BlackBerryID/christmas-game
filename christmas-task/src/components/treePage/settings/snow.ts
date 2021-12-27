@@ -1,21 +1,36 @@
 import { LocalStorage, ILocalStorage } from '../../localStorage/storage';
 
+interface ISnow {
+  addListener(): void;
+  toggleSnow(): void;
+}
+
 class Snow {
   private snowContainer: HTMLElement;
   private snowBtn: HTMLButtonElement;
+  private resetSettingsButton: HTMLButtonElement;
   private storage: ILocalStorage;
   private interval?: number;
 
   constructor() {
     this.snowContainer = document.querySelector('.snowflakes') as HTMLElement;
     this.snowBtn = document.querySelector('.snow-btn') as HTMLButtonElement;
+    this.resetSettingsButton = document.querySelector('.settings-column_btn') as HTMLButtonElement;
     this.interval;
     this.storage = new LocalStorage();
   }
 
   addListener(): void {
     this.snowBtn.addEventListener('click', () => this.toggleSnow());
+    this.resetSettingsButton.addEventListener('click', () => this.removeSnow());
     window.addEventListener('DOMContentLoaded', () => this.checkSnow(this.storage.storage.isSnowActive));
+  }
+
+  private removeSnow() {
+    clearInterval(this.interval);
+    const snowflakes = this.snowContainer.querySelectorAll('.snowflake');
+    snowflakes.forEach((item) => item.remove());
+    this.snowBtn.classList.remove('active');
   }
 
   private checkSnow(isSnowActive?: boolean): void {
@@ -24,7 +39,7 @@ class Snow {
     }
   }
 
-  toggleSnow() {
+  toggleSnow(): void {
     if (!this.snowBtn.classList.contains('active')) {
       this.interval = window.setInterval(() => this.createSnowFlake(), 50);
       this.storage.storage.isSnowActive = true;
@@ -55,4 +70,4 @@ class Snow {
   }
 }
 
-export { Snow };
+export { Snow, ISnow };
